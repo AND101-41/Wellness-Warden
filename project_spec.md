@@ -59,7 +59,11 @@ Required Feature
 ## Wireframes
 
 <!-- Add picture of your hand sketched wireframes in this section -->
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+
+![20231105_170951](https://github.com/wresendiz1/and101-capstone/assets/105386979/cf60c2d0-199c-4e89-9130-01ca0d030a36)
+![Nutritio_231105_170748_2](https://github.com/wresendiz1/and101-capstone/assets/105386979/6bbbb089-1c8e-4789-a9a2-a4465eab821c)
+![20231105_170919](https://github.com/wresendiz1/and101-capstone/assets/105386979/7fd98c54-6387-4170-8fec-95cc26264a9e)
+
 
 ### [BONUS] Digital Wireframes & Mockups
 
