@@ -18,6 +18,8 @@ Mobile App Dev - App Brainstorming Example
 ## New App Ideas - List
 1. Fitness Buddy Matchmaker
     - User can enter their fitness goals and find a buddy with similar goals. They can then connect and work together to accomplish their goals.
+2. Home Workout Planner
+    - Users can input their fitness level and available equipment, and the app will generate a personalized home workout plan.
 3. Flight Tracker
     - User can enter parameters such as price and number of stops between two destinations and obtain the flights information such as price and the price history of that flight.
 4. Nutrition Tracker
