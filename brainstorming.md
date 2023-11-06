@@ -62,4 +62,4 @@ Mobile App Dev - App Brainstorming Example
 
 
 ## Final Decision
-- We decided to go with the **Tic-Tac Toe Game** idea as it is a fun game to build and we can utilize a sports player DB API to scrape players details. We can also add different modes to the existing game. We can also add a feature to allow users to play with friends and family in person. We can also add a feature to allow users to play with friends online. We can also add a feature to allow for more game modes and a larger selection of leagues and customization for each game. A stripped down version of the game will still be fun to build as the main theme of competition and using your knowledge of sports would be still there.
+- We decided to go with the **Nutrition Tracker** app as it has a defined scope and has few challenges which can be completed by the deadline. It also has a lot of potential for future development and can be expanded to include more features. The other two ideas are also interesting and we might work on them in the future.
