@@ -1,19 +1,20 @@
 <!-- (This is a comment) INSTRUCTIONS: Go through this page and fill out any **bolded** entries with their correct values.-->
 
-# AND101 Milestone 1 - **Team/App Name**
+# AND101 Milestone 1 - **Wellness Warden**
 
 Submitted by:
-- **Team Member 1 Name Here**
-- **Team Member 2 Name Here**
-- **etc**
+- **Willy Resendiz**
+- **Ray Isaac Simbiri**
+- **Abdinahmen Ahmed**
+- **Heet Patel**
 
-Time spent: **X** hours spent in total
+Time spent: **4** hours spent in total
 
 ## Summary
 
-This document provides an overview, project spec, and wireframes for our team's capstone project: An app that **short description of your app**
+This document provides an overview, project spec, and wireframes for our team's capstone project: An app that **helps users track their food intake and nutritional values**.
 
-If we had to describe this milestone in three (3) emojis, they would be: **emojis here**
+If we had to describe this milestone in three (3) emojis, they would be: **⚒️🖌️✍️**
 
 ## Milestone Requirements
 

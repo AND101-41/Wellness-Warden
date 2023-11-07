@@ -141,7 +141,7 @@ For Milestone 2, include **2+ Videos/GIFs** of the build process here!
 
 ## License
 
-Copyright **2023** **Willy Resendiz __ADD__**
+Copyright **2023** **Willy Resendiz, Ray Isaac Simbiri, Abdinahmen Ahmed, Heet Patel**
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
