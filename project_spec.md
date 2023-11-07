@@ -53,12 +53,20 @@ Stretch Features:
 
 ### 2. Chosen API(s)
 
-- **list first API endpoint here**
-  - **list associated required feature here**
-  - ...
-- ...
-1. https://nutrition-api-dev.esha.com/apis
-2. https://developer.edamam.com/edamam-docs-nutrition-api 
+- **Nutrition API by ESHA Research**
+  - **API Endpoint: https://nutrition-api-dev.esha.com/apis**
+  - Associated Required Features
+     - User can log food items they consume: This API can be used to search and retrieve nutritional information for food items that users log.
+     - User can retrieve nutritional information of logged food items: This API provides detailed nutritional information for various food items.
+     - User can view their daily intake of calories, carbs, proteins, and other nutrients: The API can be used to calculate and display the daily intake of calories, carbs, proteins, and other nutrients based on logged food items.
+     - User can compare their daily intake with recommended dietary values: The API data can be compared with recommended dietary values to provide feedback to users.
+- **Edamam Nutrition Analysis API**
+  - API Endpoint: https://developer.edamam.com/edamam-docs-nutrition-api
+  - Associated Required Features
+    - User can log food items they consume: This API can be used to search and retrieve nutritional information for food items     - that users log.
+    - User can retrieve nutritional information of logged food items: This API provides detailed nutritional information for various food items.
+    - User can view their daily intake of calories, carbs, proteins, and other nutrients: The API can be used to calculate and     - display the daily intake of calories, carbs, proteins, and other nutrients based on logged food items.
+    - User can compare their daily intake with recommended dietary values: The API data can be compared with recommended dietary values to provide feedback to users. 
 
 ### 3. User Interaction
 
