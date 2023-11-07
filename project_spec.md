@@ -54,27 +54,28 @@ Stretch Features:
 ### 2. Chosen API(s)
 
 - **USDA Food Data Central**
-- **API Endpoint: https://fdc.nal.usda.gov/api-guide.html**
-- Information Used from the API:
-  - Detailed food information, including names, descriptions, serving sizes, and unique identifiers.
-  - Comprehensive nutrient data, including macronutrients, vitamins, minerals, and other essential nutrients.
-  - Data on different serving sizes for accurate measurement of food intake.
-  - Information on food components and food groups for user classification.
-  - Data sources and references for transparency and credibility.
-  - Links to images and icons related to food items for a visually engaging user experience.
-- **API Endpoint: https://nutrition-api-dev.esha.com/apis**
-  - Associated Required Features
-     - User can log food items they consume: This API can be used to search and retrieve nutritional information for food items that users log.
-     - User can retrieve nutritional information of logged food items: This API provides detailed nutritional information for various food items.
-     - User can view their daily intake of calories, carbs, proteins, and other nutrients: The API can be used to calculate and display the daily intake of calories, carbs, proteins, and other nutrients based on logged food items.
-     - User can compare their daily intake with recommended dietary values: The API data can be compared with recommended dietary values to provide feedback to users.
+  - **API Endpoint: https://fdc.nal.usda.gov/api-guide.html**
+  - Information Used from the API
+    - Detailed food information, including names, descriptions, serving sizes, and unique identifiers.
+    - Comprehensive nutrient data, including macronutrients, vitamins, minerals, and other essential nutrients.
+    - Data on different serving sizes for accurate measurement of food intake.
+    - Information on food components and food groups for user classification.
+    - Data sources and references for transparency and credibility.
+    - Links to images and icons related to food items for a visually engaging user experience.
+- **Nutrition API by ESHA Research**
+  - **API Endpoint: https://nutrition-api-dev.esha.com/apis**
+  - Information Used from the API
+    - Nutritional information for food items, including calories, carbohydrates, proteins, fats, vitamins, and minerals, which is essential for monitoring food intake.
+    - Ability to search and retrieve detailed nutritional data for foods that users log.
+    - Calculation of daily intake of calories, carbs, proteins, and other nutrients based on logged food items.
+    - Comparison of daily intake with recommended dietary values, providing feedback to users for healthier choices.
 - **Edamam Nutrition Analysis API**
   - API Endpoint: https://developer.edamam.com/edamam-docs-nutrition-api
-  - Associated Required Features
-    - User can log food items they consume: This API can be used to search and retrieve nutritional information for food items     - that users log.
-    - User can retrieve nutritional information of logged food items: This API provides detailed nutritional information for various food items.
-    - User can view their daily intake of calories, carbs, proteins, and other nutrients: The API can be used to calculate and     - display the daily intake of calories, carbs, proteins, and other nutrients based on logged food items.
-    - User can compare their daily intake with recommended dietary values: The API data can be compared with recommended dietary values to provide feedback to users. 
+  - Information Used from the API:
+    - Nutritional data for food items, including calories, carbs, proteins, and other nutrients, enabling users to track their dietary intake.
+    - Ability to search and retrieve detailed nutritional information for logged food items.
+    - Calculation and display of daily intake of essential nutrients based on logged food items.
+    - Comparison of daily intake with recommended dietary values to provide users with feedback for informed decisions.
 
 ### 3. User Interaction
 
