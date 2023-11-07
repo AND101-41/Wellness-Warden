@@ -55,11 +55,13 @@ Stretch Features:
 
 - **USDA Food Data Central**
 - **API Endpoint: https://fdc.nal.usda.gov/api-guide.html**
-  - Associated Required Features
-    - User can log food items they consume: This API can be used to search and retrieve nutritional information for food items that users log.
-    - User can retrieve nutritional information of logged food items: The API provides access to a comprehensive database of food items and their nutritional content, allowing users to retrieve detailed information.
-    - User can view their daily intake of calories, carbs, proteins, and other nutrients: The API can be used to calculate and display the daily intake of calories, carbs, proteins, and other nutrients based on logged food items.
-    - User can compare their daily intake with recommended dietary values: The API data can be used to compare the user's daily intake with recommended dietary values.trition API by ESHA Research**
+- Information Used from the API:
+  - Detailed food information, including names, descriptions, serving sizes, and unique identifiers.
+  - Comprehensive nutrient data, including macronutrients, vitamins, minerals, and other essential nutrients.
+  - Data on different serving sizes for accurate measurement of food intake.
+  - Information on food components and food groups for user classification.
+  - Data sources and references for transparency and credibility.
+  - Links to images and icons related to food items for a visually engaging user experience.
 - **API Endpoint: https://nutrition-api-dev.esha.com/apis**
   - Associated Required Features
      - User can log food items they consume: This API can be used to search and retrieve nutritional information for food items that users log.
