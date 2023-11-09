@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">WellNess Warden</string>
+    <string name="my_profile">My profile</string>
+    <string name="food_journal">Food Journal</string>
+</resources>

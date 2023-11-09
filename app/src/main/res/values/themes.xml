@@ -1,0 +1,22 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.WellNessWarden" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/orangePrimary</item>
+        <item name="colorPrimaryVariant">@color/orangePrimaryVariant</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/greenSecondary</item>
+        <item name="colorSecondaryVariant">@color/greenSecVariant</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="bottomNavTextStyle" parent="Widget.Material3.BottomNavigationView">
+        <item name="fontFamily">@font/baloo_paaji_2_semibold</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+</resources>
