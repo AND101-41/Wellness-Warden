@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/foodJournalFragment"
+        android:icon="@drawable/food_journal_icon"
+        android:title="@string/food_journal"
+        app:showAsAction="always"/>
+
+    <item
+            android:id="@+id/myProfileFragment"
+            android:icon="@drawable/profiles"
+            android:title="@string/my_profile"
+            app:showAsAction="always"/>
+
+</menu>

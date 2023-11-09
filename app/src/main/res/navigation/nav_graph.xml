@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/foodJournalFragment">
+
+    <fragment
+        android:id="@+id/foodJournalFragment"
+        android:name="com.simbiri.wellness_warden.FoodJournalFragment"
+        android:label="food_journal_fragment"
+        tools:layout="@layout/food_journal_fragment" />
+    <fragment
+        android:id="@+id/myProfileFragment"
+        android:name="com.simbiri.wellness_warden.MyProfileFragment"
+        android:label="my_profile_fragment"
+        tools:layout="@layout/my_profile_fragment" />
+
+</navigation>
