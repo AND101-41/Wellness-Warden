@@ -17,7 +17,9 @@
         tools:targetApi="32">
         <activity
             android:name="com.simbiri.wellness_warden.MainActivity"
-            android:exported="true">
+            android:windowSoftInputMode="adjustPan"
+            android:exported="true"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -6,16 +6,32 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import android.widget.Toast
+import androidx.cardview.widget.CardView
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class FoodJournalFragment : Fragment() {
 
     companion object {
         fun newInstance() = FoodJournalFragment()
     }
-    //for now don't worry about ViewModels and Companion Objects, just concern yourself with the UI logic inside OnCreateView
+
     private lateinit var viewModel: FoodJournalViewModel
-    private lateinit var textHello :TextView
+    //for now don't worry about ViewModels and Companion Objects, just concern yourself with the UI logic inside OnCreateView
+    private lateinit var  recyclerViewSearch: RecyclerView
+    private lateinit var recyclerViewBreakFast : RecyclerView
+    private lateinit var recyclerViewLunch : RecyclerView
+    private lateinit var recyclerViewDinner :RecyclerView
+    private lateinit var recyclerViewSnacks : RecyclerView
+
+    private lateinit var cardViewCalculateBreak : CardView
+    private lateinit var cardViewCalculateLunch : CardView
+    private lateinit var cardViewCalculateDinner : CardView
+    private lateinit var cardViewCalculateSnack : CardView
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,11 +41,91 @@ class FoodJournalFragment : Fragment() {
 
 
         //this is how you initialize a variable in a fragment. A little different but same logic
-        textHello = viewFrag.findViewById(R.id.helloFJText)
+        initializeViews(viewFrag)
+
+        setUpAdaptersAndLayoutManagers()
+
+        setUpListeners()
 
         //add other UI logic here i.e recyclerViewsEtc
 
         return viewFrag
+    }
+
+    private fun setUpListeners() {
+
+        cardViewCalculateBreak.setOnClickListener{ recyclerViewBreakFast.adapter!!.notifyDataSetChanged()
+        Toast.makeText(requireContext(), "Updated BreakFast List", Toast.LENGTH_SHORT).show()
+        }
+
+        cardViewCalculateLunch.setOnClickListener {recyclerViewLunch.adapter!!.notifyDataSetChanged()
+            Toast.makeText(requireContext(), "Updated Lunch List", Toast.LENGTH_SHORT).show()
+        }
+
+        cardViewCalculateDinner.setOnClickListener{recyclerViewDinner.adapter!!.notifyDataSetChanged()
+            Toast.makeText(requireContext(), "Updated Dinner List", Toast.LENGTH_SHORT).show()
+        }
+
+        cardViewCalculateSnack.setOnClickListener{recyclerViewSnacks.adapter!!.notifyDataSetChanged()
+            Toast.makeText(requireContext(), "Updated Snack List", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun initializeViews(viewFrag: View) {
+
+        recyclerViewSearch =  viewFrag.findViewById(R.id.recyclerViewSearches)
+        recyclerViewBreakFast = viewFrag.findViewById(R.id.recyclerViewBreakFast)
+        recyclerViewLunch = viewFrag.findViewById(R.id.recyclerViewLunch)
+        recyclerViewDinner = viewFrag.findViewById(R.id.recyclerViewDinner)
+        recyclerViewSnacks = viewFrag.findViewById(R.id.recyclerViewSnack)
+
+        cardViewCalculateBreak = viewFrag.findViewById(R.id.calculateTotalBreakCard)
+        cardViewCalculateDinner = viewFrag.findViewById(R.id.calculateTotalDinnerCard)
+        cardViewCalculateLunch = viewFrag.findViewById(R.id.calculateTotalLunchCard)
+        cardViewCalculateSnack = viewFrag.findViewById(R.id.calculateTotalSnackCard)
+
+    }
+
+    private fun setUpAdaptersAndLayoutManagers() {
+
+        val context = requireContext()
+        val adapterForCommon = FoodSearchAdapter(context, CommonFoods.arrayListFoods!!)
+        val adapterForBreakFast = FoodSearchAdapter(context, CommonFoods.allBreakFast)
+        val adapterForLunch = FoodSearchAdapter(context, CommonFoods.allLunch)
+        val adapterForDinner = FoodSearchAdapter(context, CommonFoods.allDinner)
+        val adapterForSnacks = FoodSearchAdapter(context, CommonFoods.allSnacks)
+
+
+        val layoutManagerCommon = GridLayoutManager(context, 2)
+        layoutManagerCommon.orientation = RecyclerView.VERTICAL
+
+        val layoutManagerBreakFast = LinearLayoutManager(context)
+        layoutManagerBreakFast.orientation = RecyclerView.HORIZONTAL
+
+        val layoutManagerLunch = LinearLayoutManager(context)
+        layoutManagerLunch.orientation = RecyclerView.HORIZONTAL
+
+        val layoutManagerDinner = LinearLayoutManager(context)
+        layoutManagerDinner.orientation = RecyclerView.HORIZONTAL
+
+        val layoutManagerSnack = LinearLayoutManager(context)
+        layoutManagerSnack.orientation = RecyclerView.HORIZONTAL
+
+        recyclerViewSearch.adapter = adapterForCommon
+        recyclerViewSearch.layoutManager = layoutManagerCommon
+
+        recyclerViewBreakFast.adapter = adapterForBreakFast
+        recyclerViewBreakFast.layoutManager = layoutManagerBreakFast
+
+        recyclerViewLunch.adapter = adapterForLunch
+        recyclerViewLunch.layoutManager = layoutManagerLunch
+
+        recyclerViewDinner.adapter = adapterForDinner
+        recyclerViewDinner.layoutManager = layoutManagerDinner
+
+        recyclerViewSnacks.adapter = adapterForSnacks
+        recyclerViewSnacks.layoutManager = layoutManagerSnack
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
