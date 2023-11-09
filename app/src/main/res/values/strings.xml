@@ -2,4 +2,16 @@
     <string name="app_name">WellNess Warden</string>
     <string name="my_profile">My profile</string>
     <string name="food_journal">Food Journal</string>
+    <string name="my_food_journal">My Food Journal</string>
+    <string name="cancel">Cancel</string>
+    <string name="search_for_food_item">Search for Food Item e.g beef</string>
+    <string name="image_of_food">Image of food</string>
+    <string name="common_searches">Common Searches</string>
+    <string name="roasted_beef">Roasted Beef</string>
+    <string name="my_snacks">My Snacks</string>
+    <string name="my_dinner">My Dinner</string>
+    <string name="my_lunch">My Lunch</string>
+    <string name="my_breakfast">My BreakFast</string>
+    <string name="calculate_total_intake">Calculate Total Intake</string>
+    <string name="today_s_intake">Today\'s Intake</string>
 </resources>

@@ -11,6 +11,8 @@
     <color name="orangePrimaryVariant">#F66E43</color>
     <color name="greenSecondary">#126815</color>
     <color name="greenSecVariant">#8BC34A</color>
+    <color name="lightGray">#ADFFFFFF</color>
     <color name="grey">#ADFFFFFF</color>
+
 
 </resources>
