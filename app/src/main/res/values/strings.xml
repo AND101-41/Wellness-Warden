@@ -4,7 +4,7 @@
     <string name="food_journal">Food Journal</string>
     <string name="my_food_journal">My Food Journal</string>
     <string name="cancel">Cancel</string>
-    <string name="search_for_food_item">Search for Food Item e.g beef</string>
+    <string name="search_for_food_item">Search for Food Item e.g roasted beef</string>
     <string name="image_of_food">Image of food</string>
     <string name="common_searches">Common Searches</string>
     <string name="roasted_beef">Roasted Beef</string>
@@ -14,4 +14,12 @@
     <string name="my_breakfast">My BreakFast</string>
     <string name="calculate_total_intake">Calculate Total Intake</string>
     <string name="today_s_intake">Today\'s Intake</string>
+    <string name="add">Add</string>
+    <string name="info">Info</string>
+    <string name="_1">1</string>
+    <string name="add_food_to_today_meal">Add food to any meal</string>
+    <string name="snacks">Snacks</string>
+    <string name="dinner">Dinner</string>
+    <string name="lunch">Lunch</string>
+    <string name="refresh">Refresh</string>
 </resources>
