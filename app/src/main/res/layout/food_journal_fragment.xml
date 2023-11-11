@@ -48,6 +48,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
             android:textSize="17sp"
+            android:fontFamily="@font/baloo_paaji_2_semibold"
             android:text="@string/common_searches"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/searchView" />
@@ -83,12 +84,30 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="50dp"
             android:fontFamily="@font/baloo_paaji_2_semibold"
             android:text="@string/today_s_intake"
             android:textSize="17sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cardViewSearch" />
+
+        <TextView
+            android:id="@+id/updateMealsButton"
+            android:text="@string/refresh"
+            android:textColor="@color/white"
+            android:layout_width="70dp"
+            android:clickable="true"
+            android:textAlignment="center"
+            android:layout_marginBottom="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/cardViewTodayIntake"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="@font/baloo_paaji_2_semibold"
+            android:textSize="17sp"
+            android:textAllCaps="false"
+            android:layout_height="wrap_content"
+            android:background="@drawable/white_smooth_shape"
+            android:backgroundTint="?attr/colorPrimaryVariant"/>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardViewTodayIntake"
@@ -151,42 +170,7 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            tools:listitem="@layout/search_recycler_item" />
-
-                        <androidx.cardview.widget.CardView
-                            android:id="@+id/calculateTotalBreakCard"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:clickable="true"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/recyclerViewBreakFast">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="3dp"
-                                android:layout_marginTop="3dp"
-                                android:layout_marginEnd="3dp"
-                                android:layout_marginBottom="3dp"
-                                android:fontFamily="@font/baloo_paaji_2_semibold"
-                                android:text="@string/calculate_total_intake"
-                                android:textColor="?attr/colorPrimaryVariant" />
-
-                        </androidx.cardview.widget.CardView>
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/recyclerViewTotalIntakeBreakFast"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginEnd="5dp"
-                            android:layout_marginBottom="5dp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/calculateTotalBreakCard" />
+                            tools:listitem="@layout/meal_list_item" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -234,43 +218,7 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            tools:listitem="@layout/search_recycler_item" />
-
-                        <androidx.cardview.widget.CardView
-                            android:id="@+id/calculateTotalLunchCard"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:clickable="true"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/recyclerViewLunch">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="3dp"
-                                android:layout_marginTop="3dp"
-                                android:layout_marginEnd="3dp"
-                                android:layout_marginBottom="3dp"
-                                android:fontFamily="@font/baloo_paaji_2_semibold"
-                                android:text="@string/calculate_total_intake"
-                                android:textColor="?attr/colorPrimaryVariant" />
-
-                        </androidx.cardview.widget.CardView>
-
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/recyclerViewTotalIntakeLunch"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginEnd="5dp"
-                            android:layout_marginBottom="5dp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/calculateTotalLunchCard" />
+                            tools:listitem="@layout/meal_list_item" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -318,42 +266,7 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            tools:listitem="@layout/search_recycler_item" />
-
-                        <androidx.cardview.widget.CardView
-                            android:id="@+id/calculateTotalDinnerCard"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:clickable="true"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/recyclerViewDinner">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="3dp"
-                                android:layout_marginTop="3dp"
-                                android:layout_marginEnd="3dp"
-                                android:layout_marginBottom="3dp"
-                                android:fontFamily="@font/baloo_paaji_2_semibold"
-                                android:text="@string/calculate_total_intake"
-                                android:textColor="?attr/colorPrimaryVariant" />
-
-                        </androidx.cardview.widget.CardView>
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/recyclerViewTotalIntakeDinner"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginEnd="5dp"
-                            android:layout_marginBottom="5dp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/calculateTotalDinnerCard" />
+                            tools:listitem="@layout/meal_list_item" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -401,42 +314,7 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            tools:listitem="@layout/search_recycler_item" />
-
-                        <androidx.cardview.widget.CardView
-                            android:id="@+id/calculateTotalSnackCard"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:clickable="true"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/recyclerViewSnack">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="3dp"
-                                android:layout_marginTop="3dp"
-                                android:layout_marginEnd="3dp"
-                                android:layout_marginBottom="3dp"
-                                android:fontFamily="@font/baloo_paaji_2_semibold"
-                                android:text="@string/calculate_total_intake"
-                                android:textColor="?attr/colorPrimaryVariant" />
-
-                        </androidx.cardview.widget.CardView>
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/recyclerViewTotalIntakeSnacks"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginEnd="5dp"
-                            android:layout_marginBottom="5dp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/calculateTotalSnackCard" />
+                            tools:listitem="@layout/meal_list_item" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 

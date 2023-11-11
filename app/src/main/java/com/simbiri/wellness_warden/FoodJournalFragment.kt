@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.GridLayoutManager
@@ -21,10 +23,12 @@ class FoodJournalFragment : Fragment() {
     private lateinit var viewModel: FoodJournalViewModel
     //for now don't worry about ViewModels and Companion Objects, just concern yourself with the UI logic inside OnCreateView
     private lateinit var  recyclerViewSearch: RecyclerView
+
     private lateinit var recyclerViewBreakFast : RecyclerView
     private lateinit var recyclerViewLunch : RecyclerView
     private lateinit var recyclerViewDinner :RecyclerView
     private lateinit var recyclerViewSnacks : RecyclerView
+    private lateinit var textRefresh : TextView
 
     private lateinit var cardViewCalculateBreak : CardView
     private lateinit var cardViewCalculateLunch : CardView
@@ -32,13 +36,11 @@ class FoodJournalFragment : Fragment() {
     private lateinit var cardViewCalculateSnack : CardView
 
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val viewFrag =  inflater.inflate(R.layout.food_journal_fragment, container, false)
-
 
         //this is how you initialize a variable in a fragment. A little different but same logic
         initializeViews(viewFrag)
@@ -52,22 +54,18 @@ class FoodJournalFragment : Fragment() {
         return viewFrag
     }
 
+
     private fun setUpListeners() {
 
-        cardViewCalculateBreak.setOnClickListener{ recyclerViewBreakFast.adapter!!.notifyDataSetChanged()
-        Toast.makeText(requireContext(), "Updated BreakFast List", Toast.LENGTH_SHORT).show()
-        }
+        textRefresh.setOnClickListener {
 
-        cardViewCalculateLunch.setOnClickListener {recyclerViewLunch.adapter!!.notifyDataSetChanged()
-            Toast.makeText(requireContext(), "Updated Lunch List", Toast.LENGTH_SHORT).show()
-        }
+            recyclerViewBreakFast.adapter!!.notifyDataSetChanged()
+            recyclerViewLunch.adapter!!.notifyDataSetChanged()
+            recyclerViewDinner.adapter!!.notifyDataSetChanged()
+            recyclerViewSnacks.adapter!!.notifyDataSetChanged()
 
-        cardViewCalculateDinner.setOnClickListener{recyclerViewDinner.adapter!!.notifyDataSetChanged()
-            Toast.makeText(requireContext(), "Updated Dinner List", Toast.LENGTH_SHORT).show()
-        }
+            Toast.makeText(requireContext(), "Updated meals info", Toast.LENGTH_LONG).show()
 
-        cardViewCalculateSnack.setOnClickListener{recyclerViewSnacks.adapter!!.notifyDataSetChanged()
-            Toast.makeText(requireContext(), "Updated Snack List", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -79,10 +77,7 @@ class FoodJournalFragment : Fragment() {
         recyclerViewDinner = viewFrag.findViewById(R.id.recyclerViewDinner)
         recyclerViewSnacks = viewFrag.findViewById(R.id.recyclerViewSnack)
 
-        cardViewCalculateBreak = viewFrag.findViewById(R.id.calculateTotalBreakCard)
-        cardViewCalculateDinner = viewFrag.findViewById(R.id.calculateTotalDinnerCard)
-        cardViewCalculateLunch = viewFrag.findViewById(R.id.calculateTotalLunchCard)
-        cardViewCalculateSnack = viewFrag.findViewById(R.id.calculateTotalSnackCard)
+        textRefresh = viewFrag.findViewById(R.id.updateMealsButton)
 
     }
 
@@ -90,10 +85,10 @@ class FoodJournalFragment : Fragment() {
 
         val context = requireContext()
         val adapterForCommon = FoodSearchAdapter(context, CommonFoods.arrayListFoods!!)
-        val adapterForBreakFast = FoodSearchAdapter(context, CommonFoods.allBreakFast)
-        val adapterForLunch = FoodSearchAdapter(context, CommonFoods.allLunch)
-        val adapterForDinner = FoodSearchAdapter(context, CommonFoods.allDinner)
-        val adapterForSnacks = FoodSearchAdapter(context, CommonFoods.allSnacks)
+        val adapterForBreakFast = MealListAdapter(context, CommonFoods.allBreakFast)
+        val adapterForLunch = MealListAdapter(context, CommonFoods.allLunch)
+        val adapterForDinner = MealListAdapter(context, CommonFoods.allDinner)
+        val adapterForSnacks = MealListAdapter(context, CommonFoods.allSnacks)
 
 
         val layoutManagerCommon = GridLayoutManager(context, 2)

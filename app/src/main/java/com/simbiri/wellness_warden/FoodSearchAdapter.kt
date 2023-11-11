@@ -1,27 +1,63 @@
 package com.simbiri.wellness_warden
 
 import android.content.Context
+import android.os.Parcel
+import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 
-data class Food(val imageId : Int, val foodName : String)
+data class Food(val imageId : Int, val foodName : String, val foodInfo : String) : Parcelable {
+    constructor(parcel: Parcel) : this(
+        parcel.readInt(),
+        parcel.readString()?: "",
+        parcel.readString() ?: ""
+    ) {
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    override fun writeToParcel(dest: Parcel, flags: Int) {
+        dest.writeString(foodName)
+        dest.writeString(foodInfo)
+    }
+
+    companion object CREATOR : Parcelable.Creator<Food> {
+        override fun createFromParcel(parcel: Parcel): Food {
+            return Food(parcel)
+        }
+
+        override fun newArray(size: Int): Array<Food?> {
+            return arrayOfNulls(size)
+        }
+    }
+}
 
 object CommonFoods{
 
-    var listImages =  arrayOf(
-        R.drawable.chicken, R.drawable.beef,R.drawable.milk,R.drawable.mexicantaco
+    var listImages = arrayOf(
+        R.drawable.chicken, R.drawable.beef, R.drawable.milk, R.drawable.mexicantaco
     )
 
-    var listNamesFood =  arrayOf(
-        "Fried Chicken", "Roasted beef", "Glass of Milk", "Mexican Taco"
+    var listNamesFood = arrayOf(
+        "Fried Chicken", "Roasted beef", "Fresh Milk", "Mexican Taco"
     )
 
-    var arrayListFoods : ArrayList<Food>? = null
+    var listFoodInfo = arrayOf(
+        "Energy : 250kcals, Protein:  26g,  Carbs : 40g",
+        "Energy : 200kcals, Protein :  43g,  Carbs : 10g",
+        "Energy : 150kcals, Protein :  54g,  Carbs : 40g",
+        "Energy :300kcals, Protein :  7g,  Carbs : 140g"
+    )
+
+    var arrayListFoods: ArrayList<Food>? = null
         get() {
 
             if (field != null)
@@ -32,8 +68,9 @@ object CommonFoods{
             for (imagePosition in listImages.indices) {
                 val imageId = listImages[imagePosition]
                 val nameOfFood = listNamesFood[imagePosition]
+                val infoFood = listFoodInfo[imagePosition]
 
-                val foodInstance = Food(imageId, nameOfFood)
+                val foodInstance = Food(imageId, nameOfFood,infoFood)
 
                 field!!.add(foodInstance)
             }
@@ -72,20 +109,18 @@ class FoodSearchAdapter (var context: Context, var arrayFoodList : ArrayList<Foo
 
         }
 
-        fun setOnClickListeners(){
+        fun setOnClickListeners() {
             itemView.setOnClickListener(this@FoodViewHolder)
         }
 
         override fun onClick(v: View?) {
 
-            CommonFoods.allBreakFast.add(currentFood!!)
-            CommonFoods.allDinner.add(currentFood!!)
-            CommonFoods.allLunch.add(currentFood!!)
-            CommonFoods.allSnacks.add(currentFood!!)
+            val bottomSheetSearchFragment = BottomSheetSearchFragment.newInstance(currentFood!!)
+            val transaction =
+                (itemView.context as AppCompatActivity).supportFragmentManager.beginTransaction()
+            bottomSheetSearchFragment.show(transaction, bottomSheetSearchFragment.tag)
+        }
 
-            Toast.makeText(context, "Added Food Item to BreakFast/Lunch/Dinner/Snack list", Toast.LENGTH_LONG).show()
-
-            }
 
     }
 
