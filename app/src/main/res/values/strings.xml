@@ -26,4 +26,7 @@
     <string name="total_intakes_for_today">Total intakes for today</string>
     <string name="all_macro_nutrients">All Macro-Nutrients</string>
     <string name="all_micro_nutrients">All Micro-Nutrients</string>
+    <string name="macro_nutrients">Calories - %1$d kcals, Protein - %2$d g,\nCarbs - %3$d g, Fats - %4$d g</string>
+    <string name="micro_nutrients">Vitamin A - %1$d μg, Vitamin D - %2$d μg,\nSugars - %3$d g, Iron - %4$d mg,\nCalcium - %5$d mg, Fiber - %6$d g,\nPotassium - %7$d mg, Magnesium - %8$d mg</string>
+
 </resources>

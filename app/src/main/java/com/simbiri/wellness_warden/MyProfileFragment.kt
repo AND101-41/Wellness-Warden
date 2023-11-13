@@ -20,7 +20,7 @@ class MyProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val viewFrag =  inflater.inflate(R.layout.my_profile_fragment, container, false)
+        val viewFrag = inflater.inflate(R.layout.my_profile_fragment, container, false)
 
         return viewFrag
     }

@@ -48,9 +48,11 @@ class BottomSheetMealFragment : BottomSheetDialogFragment() {
 
         foodItem?.let {
             nameFoodTextView.text = it.name
-            macroDetailsTextView.text = "Calories - ${it.macroNutrients.calories}kcals," + " Protein - ${it.macroNutrients.protein}g," +"\n"+ " Carbs - ${it.macroNutrients.carbs}g," +" Fats - ${it.macroNutrients.fats}g "
-            microDetailsTextView.text = "Vitamin A - ${it.microNutrients.vitaminA}mg," + " Vitamin D - ${it.microNutrients.vitaminD}mg," +"\n"+ " Sugars - ${it.microNutrients.sugars}g," + "  Iron - ${it.microNutrients.iron}mg," +"\n"+
-                    "Calcium - ${it.microNutrients.calcium}mg," +" Fiber - ${it.microNutrients.fiber}g," +"\n"+ " Potassium - ${it.microNutrients.potassium}mg," + " Magnesium - ${it.microNutrients.magnesium}mg"
+            macroDetailsTextView.text =
+                "Calories - ${it.macroNutrients.calories}kcals," + " Protein - ${it.macroNutrients.protein}g," + "\n" + " Carbs - ${it.macroNutrients.carbs}g," + " Fats - ${it.macroNutrients.fats}g "
+            microDetailsTextView.text =
+                "Vitamin A - ${it.microNutrients.vitaminA}mg," + " Vitamin D - ${it.microNutrients.vitaminD}mg," + "\n" + " Sugars - ${it.microNutrients.sugars}g," + "  Iron - ${it.microNutrients.iron}mg," + "\n" +
+                        "Calcium - ${it.microNutrients.calcium}mg," + " Fiber - ${it.microNutrients.fiber}g," + "\n" + " Potassium - ${it.microNutrients.potassium}mg," + " Magnesium - ${it.microNutrients.magnesium}mg"
         }
 
         return view

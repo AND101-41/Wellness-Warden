@@ -31,6 +31,7 @@
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="23sp"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cardViewDrag" />
@@ -60,6 +61,7 @@
         android:fontFamily="@font/baloo_paaji_2_semibold"
         android:text="allMacronutrients"
         android:textAlignment="center"
+        android:gravity="center"
         android:textColor="@color/white"
         android:textSize="17sp"
         app:layout_constraintEnd_toEndOf="parent"

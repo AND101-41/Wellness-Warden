@@ -1,4 +1,5 @@
 package com.simbiri.wellness_warden.model
+
 import android.os.Parcel
 import android.os.Parcelable
 

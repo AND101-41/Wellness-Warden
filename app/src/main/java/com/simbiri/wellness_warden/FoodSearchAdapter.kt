@@ -1,4 +1,5 @@
 package com.simbiri.wellness_warden
+
 import com.simbiri.wellness_warden.model.FoodItem
 
 import android.content.Context
@@ -14,16 +15,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 
 
-object CommonFoods{
+object CommonFoods {
     var allBreakFast = ArrayList<FoodItem>()
     var allLunch = ArrayList<FoodItem>()
     var allDinner = ArrayList<FoodItem>()
     var allSnacks = ArrayList<FoodItem>()
-    var allFoods =  ArrayList<FoodItem>()
+    var allFoods = ArrayList<FoodItem>()
 
 }
 
-class FoodSearchAdapter (var context: Context, var arrayFoodList : ArrayList<FoodItem>) :
+class FoodSearchAdapter(var context: Context, var arrayFoodList: ArrayList<FoodItem>) :
     RecyclerView.Adapter<FoodSearchAdapter.FoodViewHolder>() {
 
     inner class FoodViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),

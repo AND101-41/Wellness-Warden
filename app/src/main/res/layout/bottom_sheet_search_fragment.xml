@@ -28,6 +28,7 @@
         android:fontFamily="@font/baloo_paaji_2_semibold"
         android:text="@string/add_food_to_today_meal"
         android:textColor="@color/white"
+        android:textAlignment="center"
         android:textSize="17sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

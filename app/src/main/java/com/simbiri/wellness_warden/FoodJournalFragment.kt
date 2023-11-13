@@ -83,19 +83,34 @@ class FoodJournalFragment : Fragment() {
             val totalFoodItem = calculateMealsTotal(CommonFoods.allFoods)
 
             totalFoodItem.let {
-                totalMacroText.text =
-                    "Calories - ${it.macroNutrients.calories.toInt()}kcals," + " Protein - ${it.macroNutrients.protein.toInt()}g," + "\n" + " Carbs - ${it.macroNutrients.carbs.toInt()}g," + " Fats - ${it.macroNutrients.fats.toInt()}g "
-                totalMicroTextView.text =
-                    "Vitamin A - ${it.microNutrients.vitaminA.toInt()}mg," + " Vitamin D - ${it.microNutrients.vitaminD.toInt()}mg," + "\n" + " Sugars - ${it.microNutrients.sugars.toInt()}g," + "  Iron - ${it.microNutrients.iron.toInt()}mg," + "\n" +
-                            "Calcium - ${it.microNutrients.calcium.toInt()}mg," + " Fiber - ${it.microNutrients.fiber.toInt()}g," + "\n" + " Potassium - ${it.microNutrients.potassium.toInt()}mg," + " Magnesium - ${it.microNutrients.magnesium.toInt()}mg"
+                totalMacroText.text = getString(
+                    R.string.macro_nutrients,
+                    it.macroNutrients.calories.toInt(),
+                    it.macroNutrients.protein.toInt(),
+                    it.macroNutrients.carbs.toInt(),
+                    it.macroNutrients.fats.toInt()
+                )
+
+                totalMicroTextView.text = getString(
+                    R.string.micro_nutrients,
+                    it.microNutrients.vitaminA.toInt(),
+                    it.microNutrients.vitaminD.toInt(),
+                    it.microNutrients.sugars.toInt(),
+                    it.microNutrients.iron.toInt(),
+                    it.microNutrients.calcium.toInt(),
+                    it.microNutrients.fiber.toInt(),
+                    it.microNutrients.potassium.toInt(),
+                    it.microNutrients.magnesium.toInt()
+                )
             }
+
 
             Toast.makeText(requireContext(), "Updated meals info", Toast.LENGTH_LONG).show()
 
         }
         foodSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
-                // 2. Call API
+                // Calls API, parses request, and updates recycler view
                 getRequestFood(query)
                 return true
             }
@@ -140,7 +155,7 @@ class FoodJournalFragment : Fragment() {
     private fun setUpAdaptersAndLayoutManagers() {
 
         val context = requireContext()
-//        val adapterForCommon = FoodSearchAdapter(context, searchFoodList)
+
         val adapterForBreakFast = MealListAdapter(context, CommonFoods.allBreakFast)
         val adapterForLunch = MealListAdapter(context, CommonFoods.allLunch)
         val adapterForDinner = MealListAdapter(context, CommonFoods.allDinner)
@@ -162,8 +177,6 @@ class FoodJournalFragment : Fragment() {
         val layoutManagerSnack = LinearLayoutManager(context)
         layoutManagerSnack.orientation = RecyclerView.HORIZONTAL
 
-//        recyclerViewSearch.adapter = adapterForCommon
-//        recyclerViewSearch.layoutManager = layoutManagerCommon
 
         recyclerViewBreakFast.adapter = adapterForBreakFast
         recyclerViewBreakFast.layoutManager = layoutManagerBreakFast
@@ -198,7 +211,7 @@ class FoodJournalFragment : Fragment() {
         client[endpoint, params, object : JsonHttpResponseHandler() {
             override fun onSuccess(statusCode: Int, headers: Headers?, json: JSON?) {
 
-                var foodResults = ArrayList<FoodItem>()
+                val foodResults = ArrayList<FoodItem>()
                 val foodArr = json?.jsonObject?.getJSONArray("foods")
                 for (i in 0 until (foodArr?.length() ?: exitProcess(1))) {
                     val foodObj = foodArr.getJSONObject(i)
