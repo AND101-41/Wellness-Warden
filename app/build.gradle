@@ -57,6 +57,8 @@ dependencies {
     //dependancies for navigation component
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
+    //Picasso
+    implementation 'com.squareup.picasso:picasso:2.8'
 
     implementation 'io.ktor:ktor-client-core:1.6.7'
     implementation 'io.ktor:ktor-client-json:1.6.7'
