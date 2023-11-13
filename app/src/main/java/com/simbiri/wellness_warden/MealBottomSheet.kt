@@ -10,13 +10,14 @@ import android.widget.TextView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.simbiri.wellness_warden.model.FoodItem
 
 class BottomSheetMealFragment : BottomSheetDialogFragment() {
 
     companion object {
         private const val ARGS_FOOD_ITEM = "food_item"
 
-        fun newInstance(food: Food): BottomSheetMealFragment {
+        fun newInstance(food: FoodItem): BottomSheetMealFragment {
             val fragment = BottomSheetMealFragment()
             val args = Bundle()
             args.putParcelable(ARGS_FOOD_ITEM, food)
@@ -39,10 +40,13 @@ class BottomSheetMealFragment : BottomSheetDialogFragment() {
         nameFoodTextView = view.findViewById(R.id.nameOfFoodMealBottomSheet)
         infoNutrientsTextView = view.findViewById(R.id.infoNutrientsBottomSheet)
 
-        val foodItem = arguments?.getParcelable<Food>(ARGS_FOOD_ITEM)
+        val foodItem = arguments?.getParcelable<FoodItem>(ARGS_FOOD_ITEM)
+
+
+
         foodItem?.let {
-            nameFoodTextView.text = it.foodName
-            infoNutrientsTextView.text = it.foodInfo
+            nameFoodTextView.text = it.name
+            infoNutrientsTextView.text = it.info
         }
 
         return view

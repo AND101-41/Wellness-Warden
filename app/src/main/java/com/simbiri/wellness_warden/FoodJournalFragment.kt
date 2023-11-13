@@ -2,17 +2,31 @@ package com.simbiri.wellness_warden
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import android.widget.Button
+//import android.widget.SearchView
+import androidx.appcompat.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.codepath.asynchttpclient.AsyncHttpClient
+import com.codepath.asynchttpclient.RequestParams
+import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler
+import com.simbiri.wellness_warden.model.FoodItem
+import com.simbiri.wellness_warden.model.MacroNutrients
+import com.simbiri.wellness_warden.model.MicroNutrients
+import okhttp3.Call
+import okhttp3.Headers
+import java.io.IOException
+import kotlin.system.exitProcess
 
 class FoodJournalFragment : Fragment() {
 
@@ -21,26 +35,30 @@ class FoodJournalFragment : Fragment() {
     }
 
     private lateinit var viewModel: FoodJournalViewModel
+
     //for now don't worry about ViewModels and Companion Objects, just concern yourself with the UI logic inside OnCreateView
-    private lateinit var  recyclerViewSearch: RecyclerView
+    private lateinit var recyclerViewSearch: RecyclerView
 
-    private lateinit var recyclerViewBreakFast : RecyclerView
-    private lateinit var recyclerViewLunch : RecyclerView
-    private lateinit var recyclerViewDinner :RecyclerView
-    private lateinit var recyclerViewSnacks : RecyclerView
-    private lateinit var textRefresh : TextView
+    private lateinit var recyclerViewBreakFast: RecyclerView
+    private lateinit var recyclerViewLunch: RecyclerView
+    private lateinit var recyclerViewDinner: RecyclerView
+    private lateinit var recyclerViewSnacks: RecyclerView
+    private lateinit var textRefresh: TextView
+    private lateinit var foodSearch: SearchView
 
-    private lateinit var cardViewCalculateBreak : CardView
-    private lateinit var cardViewCalculateLunch : CardView
-    private lateinit var cardViewCalculateDinner : CardView
-    private lateinit var cardViewCalculateSnack : CardView
+    private lateinit var cardViewCalculateBreak: CardView
+    private lateinit var cardViewCalculateLunch: CardView
+    private lateinit var cardViewCalculateDinner: CardView
+    private lateinit var cardViewCalculateSnack: CardView
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val viewFrag =  inflater.inflate(R.layout.food_journal_fragment, container, false)
+        val viewFrag = inflater.inflate(R.layout.food_journal_fragment, container, false)
+
+
 
         //this is how you initialize a variable in a fragment. A little different but same logic
         initializeViews(viewFrag)
@@ -67,16 +85,30 @@ class FoodJournalFragment : Fragment() {
             Toast.makeText(requireContext(), "Updated meals info", Toast.LENGTH_LONG).show()
 
         }
+        foodSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+                // 2. Call API
+                getRequestFood(query)
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                // Respond to real-time text changes if needed
+                return false
+            }
+        })
     }
 
     private fun initializeViews(viewFrag: View) {
 
-        recyclerViewSearch =  viewFrag.findViewById(R.id.recyclerViewSearches)
+        recyclerViewSearch = viewFrag.findViewById(R.id.recyclerViewSearches)
         recyclerViewBreakFast = viewFrag.findViewById(R.id.recyclerViewBreakFast)
         recyclerViewLunch = viewFrag.findViewById(R.id.recyclerViewLunch)
         recyclerViewDinner = viewFrag.findViewById(R.id.recyclerViewDinner)
         recyclerViewSnacks = viewFrag.findViewById(R.id.recyclerViewSnack)
 
+
+        foodSearch = viewFrag.findViewById(R.id.searchView)
         textRefresh = viewFrag.findViewById(R.id.updateMealsButton)
 
     }
@@ -84,7 +116,7 @@ class FoodJournalFragment : Fragment() {
     private fun setUpAdaptersAndLayoutManagers() {
 
         val context = requireContext()
-        val adapterForCommon = FoodSearchAdapter(context, CommonFoods.arrayListFoods!!)
+//        val adapterForCommon = FoodSearchAdapter(context, searchFoodList)
         val adapterForBreakFast = MealListAdapter(context, CommonFoods.allBreakFast)
         val adapterForLunch = MealListAdapter(context, CommonFoods.allLunch)
         val adapterForDinner = MealListAdapter(context, CommonFoods.allDinner)
@@ -106,8 +138,8 @@ class FoodJournalFragment : Fragment() {
         val layoutManagerSnack = LinearLayoutManager(context)
         layoutManagerSnack.orientation = RecyclerView.HORIZONTAL
 
-        recyclerViewSearch.adapter = adapterForCommon
-        recyclerViewSearch.layoutManager = layoutManagerCommon
+//        recyclerViewSearch.adapter = adapterForCommon
+//        recyclerViewSearch.layoutManager = layoutManagerCommon
 
         recyclerViewBreakFast.adapter = adapterForBreakFast
         recyclerViewBreakFast.layoutManager = layoutManagerBreakFast
@@ -127,6 +159,88 @@ class FoodJournalFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(FoodJournalViewModel::class.java)
         // TODO: Use the ViewModel
+    }
+
+    private fun getRequestFood(queryString: String) {
+        val client = AsyncHttpClient()
+        val params = RequestParams()
+        val endpoint: String = "https://api.nal.usda.gov/fdc/v1/foods/search"
+
+        params["query"] = queryString
+        params["pageSize"] = "4"
+        params["dataType"] = "Survey (FNDDS)"
+        params["api_key"] = getString(R.string.USDA_key)
+
+        client[endpoint, params, object : JsonHttpResponseHandler() {
+            override fun onSuccess(statusCode: Int, headers: Headers?, json: JSON?) {
+
+                var foodResults = ArrayList<FoodItem>()
+                val foodArr = json?.jsonObject?.getJSONArray("foods")
+                for (i in 0 until (foodArr?.length() ?: exitProcess(1))) {
+                    val foodObj = foodArr.getJSONObject(i)
+                    val foodNutrients = foodObj.getJSONArray("foodNutrients")
+
+                    // Macros
+                    val calories = foodNutrients.getJSONObject(3).getString("value").toDouble()
+                    val protein = foodNutrients.getJSONObject(0).getString("value").toDouble()
+                    val carbs = foodNutrients.getJSONObject(2).getString("value").toDouble()
+                    val fat = foodNutrients.getJSONObject(1).getString("value").toDouble()
+
+                    // Micros
+                    val sugars = foodNutrients.getJSONObject(8).getString("value").toDouble()
+                    val fiber = foodNutrients.getJSONObject(9).getString("value").toDouble()
+                    val calcium = foodNutrients.getJSONObject(10).getString("value").toDouble()
+                    val iron = foodNutrients.getJSONObject(11).getString("value").toDouble()
+                    val mag = foodNutrients.getJSONObject(12).getString("value").toDouble()
+                    val potassium = foodNutrients.getJSONObject(14).getString("value").toDouble()
+                    val vitaminA = foodNutrients.getJSONObject(20).getString("value").toDouble()
+                    val vitaminD = foodNutrients.getJSONObject(24).getString("value").toDouble()
+
+//                    Log.d("test", foodNutrients.getJSONObject(8).toString())
+
+                    // Food
+                    val id = foodObj.getString("fdcId").toString()
+                    val name = foodObj.getString("description")
+                    var info = foodObj.getString("additionalDescriptions")
+                    info = info.ifEmpty { "N/A" }
+
+                    // Class Obj
+                    val macros = MacroNutrients(calories, protein, carbs, fat)
+                    val micros = MicroNutrients(
+                        vitaminA,
+                        vitaminD,
+                        sugars,
+                        iron,
+                        calcium,
+                        fiber,
+                        potassium,
+                        mag
+                    )
+                    val foodItem = FoodItem(id, name, info, 1.0, macros, micros, "")
+
+                    foodResults.add(foodItem)
+
+                }
+                val context = requireContext()
+                val adapter = FoodSearchAdapter(context, foodResults)
+                recyclerViewSearch.adapter = adapter
+                recyclerViewSearch.layoutManager =  GridLayoutManager(context, 2)
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Headers?,
+                errorResponse: String,
+                t: Throwable?
+            ) {
+                Toast.makeText(
+                    requireContext(),
+                    "Request failed with status code: $statusCode",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }]
+
     }
 
 }
