@@ -10,13 +10,14 @@ import android.widget.TextView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.simbiri.wellness_warden.model.FoodItem
 
 class BottomSheetMealFragment : BottomSheetDialogFragment() {
 
     companion object {
         private const val ARGS_FOOD_ITEM = "food_item"
 
-        fun newInstance(food: Food): BottomSheetMealFragment {
+        fun newInstance(food: FoodItem): BottomSheetMealFragment {
             val fragment = BottomSheetMealFragment()
             val args = Bundle()
             args.putParcelable(ARGS_FOOD_ITEM, food)
@@ -28,7 +29,8 @@ class BottomSheetMealFragment : BottomSheetDialogFragment() {
     private lateinit var viewModel: BottomSheetMealViewModel
 
     private lateinit var nameFoodTextView: TextView
-    private lateinit var infoNutrientsTextView: TextView
+    private lateinit var macroDetailsTextView: TextView
+    private lateinit var microDetailsTextView: TextView
 
 
     override fun onCreateView(
@@ -37,12 +39,18 @@ class BottomSheetMealFragment : BottomSheetDialogFragment() {
     ): View? {
         val view = inflater.inflate(R.layout.bottom_sheet_meal_fragment, container, false)
         nameFoodTextView = view.findViewById(R.id.nameOfFoodMealBottomSheet)
-        infoNutrientsTextView = view.findViewById(R.id.infoNutrientsBottomSheet)
+        macroDetailsTextView = view.findViewById(R.id.macroNutrientsText)
+        microDetailsTextView = view.findViewById(R.id.microNutrientsText)
 
-        val foodItem = arguments?.getParcelable<Food>(ARGS_FOOD_ITEM)
+        val foodItem = arguments?.getParcelable<FoodItem>(ARGS_FOOD_ITEM)
+
+
+
         foodItem?.let {
-            nameFoodTextView.text = it.foodName
-            infoNutrientsTextView.text = it.foodInfo
+            nameFoodTextView.text = it.name
+            macroDetailsTextView.text = "Calories - ${it.macroNutrients.calories}kcals," + " Protein - ${it.macroNutrients.protein}g," +"\n"+ " Carbs - ${it.macroNutrients.carbs}g," +" Fats - ${it.macroNutrients.fats}g "
+            microDetailsTextView.text = "Vitamin A - ${it.microNutrients.vitaminA}mg," + " Vitamin D - ${it.microNutrients.vitaminD}mg," +"\n"+ " Sugars - ${it.microNutrients.sugars}g," + "  Iron - ${it.microNutrients.iron}mg," +"\n"+
+                    "Calcium - ${it.microNutrients.calcium}mg," +" Fiber - ${it.microNutrients.fiber}g," +"\n"+ " Potassium - ${it.microNutrients.potassium}mg," + " Magnesium - ${it.microNutrients.magnesium}mg"
         }
 
         return view

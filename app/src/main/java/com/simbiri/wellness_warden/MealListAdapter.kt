@@ -8,38 +8,38 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.simbiri.wellness_warden.model.FoodItem
+import com.squareup.picasso.Picasso
 
-class MealListAdapter(val context: Context, val mealArrayList: ArrayList<Food>) :
+class MealListAdapter(val context: Context, val mealArrayList: ArrayList<FoodItem>) :
     RecyclerView.Adapter<MealListAdapter.MealViewHolder>() {
 
     inner class MealViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        private var currentFood: Food? = null
+        private var currentFood: FoodItem? = null
         private var positionItem = 1
 
         private var nameFoodTextView = itemView.findViewById<TextView>(R.id.nameOfFoodItem)
         private var imageOfFood = itemView.findViewById<ImageView>(R.id.imageFoodInMeal)
-        private var textAdd = itemView.findViewById<TextView>(R.id.addQuantityText)
-        private var textNumberUnits = itemView.findViewById<TextView>(R.id.textQuantityMeals)
         private var textInfoFood = itemView.findViewById<TextView>(R.id.textInfoNutrientsFood)
 
 
-        fun setDataToItem(foodInstance: Food, position: Int) {
+        fun setDataToItem(foodInstance: FoodItem, position: Int) {
 
             this.positionItem = position
             this.currentFood = foodInstance
 
-            imageOfFood.setImageResource(currentFood!!.imageId)
-            nameFoodTextView.text = currentFood!!.foodName
+//            imageOfFood.setImageResource(currentFood!!.imageId)
+            Picasso.get()
+                .load(foodInstance.imageId)
+                .into(imageOfFood)
+
+
+            nameFoodTextView.text = currentFood!!.name
 
         }
 
         fun setOnClickListeners() {
-            textAdd.setOnClickListener {
-                var numberFood = textNumberUnits.text.toString().toInt()
-                numberFood += 1
-                textNumberUnits.text = numberFood.toString()
-            }
 
             textInfoFood.setOnClickListener {
                 val bottomSheetMealFragment = BottomSheetMealFragment.newInstance(currentFood!!)

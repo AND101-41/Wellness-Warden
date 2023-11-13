@@ -4,21 +4,31 @@ import android.app.Dialog
 import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.recyclerview.widget.GridLayoutManager
+import com.codepath.asynchttpclient.AsyncHttpClient
+import com.codepath.asynchttpclient.RequestParams
+import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.simbiri.wellness_warden.model.FoodItem
+import com.simbiri.wellness_warden.model.MacroNutrients
+import com.simbiri.wellness_warden.model.MicroNutrients
+import okhttp3.Headers
+import kotlin.system.exitProcess
 
 class BottomSheetSearchFragment : BottomSheetDialogFragment() {
 
     companion object {
         private const val ARGS_FOOD_ITEM = "food_item"
-        fun newInstance(food: Food): BottomSheetSearchFragment {
+        fun newInstance(food: FoodItem): BottomSheetSearchFragment {
             val fragment = BottomSheetSearchFragment()
             val args = Bundle()
 
@@ -35,6 +45,7 @@ class BottomSheetSearchFragment : BottomSheetDialogFragment() {
     private lateinit var addLunchButton: Button
     private lateinit var addDinnerButton: Button
     private lateinit var addSnackButton: Button
+//    private lateinit var imageUrl: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,7 +53,8 @@ class BottomSheetSearchFragment : BottomSheetDialogFragment() {
     ): View? {
         val view = inflater.inflate(R.layout.bottom_sheet_search_fragment, container, false)
 
-        requireActivity().supportFragmentManager.findFragmentById(R.id.foodJournalFragment)?.onPause()
+        requireActivity().supportFragmentManager.findFragmentById(R.id.foodJournalFragment)
+            ?.onPause()
 
         view.let {
             textAddMeal = it.findViewById(R.id.textViewAddMeal)
@@ -52,9 +64,9 @@ class BottomSheetSearchFragment : BottomSheetDialogFragment() {
             addSnackButton = it.findViewById(R.id.buttonAddToSnacks)
         }
 
-        val foodInstance = arguments?.getParcelable<Food>(ARGS_FOOD_ITEM)
+        val foodInstance = arguments?.getParcelable<FoodItem>(ARGS_FOOD_ITEM)
         foodInstance?.let {
-            textAddMeal.text = "Add ${it.foodName} to any meal below "
+            textAddMeal.text = "Add ${it.name} to any meal below "
 
         }
 
@@ -64,26 +76,54 @@ class BottomSheetSearchFragment : BottomSheetDialogFragment() {
         return view
     }
 
-    private fun addOnClickListeners(foodInstance: Food?) {
+    private fun addOnClickListeners(foodInstance: FoodItem?) {
 
         addBreakFastButton.setOnClickListener {
-            CommonFoods.allBreakFast.add(foodInstance!!)
+
+            getFoodImage(foodInstance!!.name){
+                imageUrl -> foodInstance!!.imageId = if (imageUrl.isNotEmpty()) imageUrl else ""
+                CommonFoods.allBreakFast.add(foodInstance!!)
+                CommonFoods.allFoods.add(foodInstance!!)
+
+                Log.d("foodtest", foodInstance!!.imageId)
+            }
+
             Toast.makeText(requireContext(), "Added food to Breakfast", Toast.LENGTH_SHORT).show()
             dismiss()
 
         }
         addLunchButton.setOnClickListener {
-            CommonFoods.allLunch.add(foodInstance!!)
+
+            getFoodImage(foodInstance!!.name){
+                    imageUrl -> foodInstance!!.imageId = if (imageUrl.isNotEmpty()) imageUrl else ""
+                CommonFoods.allLunch.add(foodInstance!!)
+                CommonFoods.allFoods.add(foodInstance!!)
+
+                Log.d("foodtest", foodInstance!!.imageId)
+            }
+
             Toast.makeText(requireContext(), "Added food to Lunch", Toast.LENGTH_SHORT).show()
             dismiss()
         }
         addDinnerButton.setOnClickListener {
-            CommonFoods.allDinner.add(foodInstance!!)
+            getFoodImage(foodInstance!!.name){
+                    imageUrl -> foodInstance!!.imageId = if (imageUrl.isNotEmpty()) imageUrl else ""
+                CommonFoods.allDinner.add(foodInstance!!)
+                CommonFoods.allFoods.add(foodInstance!!)
+                Log.d("foodtest", foodInstance!!.imageId)
+            }
+
             Toast.makeText(requireContext(), "Added food to Dinner", Toast.LENGTH_SHORT).show()
             dismiss()
         }
         addSnackButton.setOnClickListener {
-            CommonFoods.allSnacks.add(foodInstance!!)
+            getFoodImage(foodInstance!!.name){
+                    imageUrl -> foodInstance!!.imageId = if (imageUrl.isNotEmpty()) imageUrl else ""
+                CommonFoods.allSnacks.add(foodInstance!!)
+                CommonFoods.allFoods.add(foodInstance!!)
+
+                Log.d("foodtest", foodInstance!!.imageId)
+            }
             Toast.makeText(requireContext(), "Added meal to Snacks", Toast.LENGTH_SHORT).show()
             dismiss()
         }
@@ -116,6 +156,42 @@ class BottomSheetSearchFragment : BottomSheetDialogFragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(BottomSheetSearchViewModel::class.java)
         // TODO: Use the ViewModel
+    }
+
+
+    private fun getFoodImage(queryString: String, callback: (String) -> Unit){
+        val client = AsyncHttpClient()
+        val params = RequestParams()
+        val endpoint= "https://api.unsplash.com/search/photos"
+
+        params["query"] = queryString
+        params["per_page"] = "1"
+        params["client_id"] = getString(R.string.unsplash_key)
+
+        client[endpoint, params, object : JsonHttpResponseHandler(){
+            override fun onSuccess(statusCode: Int, headers: Headers?, json: JSON?) {
+
+                val imageObj = json?.jsonObject?.getJSONArray("results")?.getJSONObject(0)
+//                imageUrl = imageObj?.getJSONObject("urls")?.getString("regular").toString()
+
+                callback(imageObj?.getJSONObject("urls")?.getString("regular").toString())
+
+
+//                if (url != null) {
+//                    Log.d("test", url)
+//                }
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Headers?,
+                errorResponse: String,
+                t: Throwable?
+            ) {
+                Log.e("Wrong", "Requested exited with $errorResponse")
+            }
+        }]
+
     }
 
 }

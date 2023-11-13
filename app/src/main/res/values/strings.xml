@@ -4,7 +4,7 @@
     <string name="food_journal">Food Journal</string>
     <string name="my_food_journal">My Food Journal</string>
     <string name="cancel">Cancel</string>
-    <string name="search_for_food_item">Search for Food Item e.g roasted beef</string>
+    <string name="search_for_food_item">Search for Food Item e.g  beef</string>
     <string name="image_of_food">Image of food</string>
     <string name="common_searches">Common Searches</string>
     <string name="roasted_beef">Roasted Beef</string>
@@ -22,4 +22,8 @@
     <string name="dinner">Dinner</string>
     <string name="lunch">Lunch</string>
     <string name="refresh">Refresh</string>
+    <string name="search_results">Search Results</string>
+    <string name="total_intakes_for_today">Total intakes for today</string>
+    <string name="all_macro_nutrients">All Macro-Nutrients</string>
+    <string name="all_micro_nutrients">All Micro-Nutrients</string>
 </resources>
