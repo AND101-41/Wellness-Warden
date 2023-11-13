@@ -29,7 +29,8 @@ class BottomSheetMealFragment : BottomSheetDialogFragment() {
     private lateinit var viewModel: BottomSheetMealViewModel
 
     private lateinit var nameFoodTextView: TextView
-    private lateinit var infoNutrientsTextView: TextView
+    private lateinit var macroDetailsTextView: TextView
+    private lateinit var microDetailsTextView: TextView
 
 
     override fun onCreateView(
@@ -38,7 +39,8 @@ class BottomSheetMealFragment : BottomSheetDialogFragment() {
     ): View? {
         val view = inflater.inflate(R.layout.bottom_sheet_meal_fragment, container, false)
         nameFoodTextView = view.findViewById(R.id.nameOfFoodMealBottomSheet)
-        infoNutrientsTextView = view.findViewById(R.id.infoNutrientsBottomSheet)
+        macroDetailsTextView = view.findViewById(R.id.macroNutrientsText)
+        microDetailsTextView = view.findViewById(R.id.microNutrientsText)
 
         val foodItem = arguments?.getParcelable<FoodItem>(ARGS_FOOD_ITEM)
 
@@ -46,7 +48,9 @@ class BottomSheetMealFragment : BottomSheetDialogFragment() {
 
         foodItem?.let {
             nameFoodTextView.text = it.name
-            infoNutrientsTextView.text = it.info
+            macroDetailsTextView.text = "Calories - ${it.macroNutrients.calories}kcals," + " Protein - ${it.macroNutrients.protein}g," +"\n"+ " Carbs - ${it.macroNutrients.carbs}g," +" Fats - ${it.macroNutrients.fats}g "
+            microDetailsTextView.text = "Vitamin A - ${it.microNutrients.vitaminA}mg," + " Vitamin D - ${it.microNutrients.vitaminD}mg," +"\n"+ " Sugars - ${it.microNutrients.sugars}g," + "  Iron - ${it.microNutrients.iron}mg," +"\n"+
+                    "Calcium - ${it.microNutrients.calcium}mg," +" Fiber - ${it.microNutrients.fiber}g," +"\n"+ " Potassium - ${it.microNutrients.potassium}mg," + " Magnesium - ${it.microNutrients.magnesium}mg"
         }
 
         return view

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="175dp"
+    android:layout_width="150dp"
     android:layout_height="125dp"
     android:layout_marginStart="5dp"
     android:layout_marginTop="5dp"
@@ -23,37 +23,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textQuantityMeals"
-            android:layout_width="30dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
-            android:textColor="@color/white"
-            android:background="@drawable/white_smooth_shape"
-            android:backgroundTint="?attr/colorPrimaryVariant"
-            android:fontFamily="@font/baloo_paaji_2_semibold"
-            android:text="@string/_1"
-            android:textAlignment="center"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/addQuantityText"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/white_smooth_shape"
-            android:backgroundTint="?attr/colorPrimaryVariant"
-            android:clickable="true"
-            android:textColor="@color/white"
-            android:fontFamily="@font/baloo_paaji_2_semibold"
-            android:text="@string/add"
-            android:textAlignment="center"
-            app:layout_constraintStart_toEndOf="@id/textQuantityMeals"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView

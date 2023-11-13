@@ -19,6 +19,7 @@ object CommonFoods{
     var allLunch = ArrayList<FoodItem>()
     var allDinner = ArrayList<FoodItem>()
     var allSnacks = ArrayList<FoodItem>()
+    var allFoods =  ArrayList<FoodItem>()
 
 }
 
@@ -31,7 +32,6 @@ class FoodSearchAdapter (var context: Context, var arrayFoodList : ArrayList<Foo
         private var positionItem = 1
         private var currentFood: FoodItem? = null
 
-        private var foodImageView: ImageView = itemView.findViewById(R.id.imageOfFood)
         private var nameFoodTextView: TextView = itemView.findViewById(R.id.nameOfFood)
 
 
@@ -40,7 +40,6 @@ class FoodSearchAdapter (var context: Context, var arrayFoodList : ArrayList<Foo
             this.positionItem = position
             this.currentFood = foodInstance
 
-//            foodImageView.setImageResource(currentFood!!.imageId)
             nameFoodTextView.text = currentFood!!.name
 
         }

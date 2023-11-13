@@ -47,20 +47,19 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
-            android:textSize="17sp"
             android:fontFamily="@font/baloo_paaji_2_semibold"
-            android:text="@string/common_searches"
+            android:text="@string/search_results"
+            android:textSize="17sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/searchView" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardViewSearch"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
-            android:backgroundTint="@android:color/darker_gray"
             android:elevation="8dp"
             app:cardCornerRadius="8dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -69,12 +68,9 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewSearches"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginBottom="5dp"
+                android:layout_margin="10dp"
                 tools:listitem="@layout/search_recycler_item" />
 
         </androidx.cardview.widget.CardView>
@@ -93,21 +89,21 @@
 
         <TextView
             android:id="@+id/updateMealsButton"
-            android:text="@string/refresh"
-            android:textColor="@color/white"
             android:layout_width="70dp"
-            android:clickable="true"
-            android:textAlignment="center"
-            android:layout_marginBottom="5dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/cardViewTodayIntake"
-            android:layout_marginEnd="10dp"
-            android:fontFamily="@font/baloo_paaji_2_semibold"
-            android:textSize="17sp"
-            android:textAllCaps="false"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="5dp"
             android:background="@drawable/white_smooth_shape"
-            android:backgroundTint="?attr/colorPrimaryVariant"/>
+            android:backgroundTint="?attr/colorPrimaryVariant"
+            android:clickable="true"
+            android:fontFamily="@font/baloo_paaji_2_semibold"
+            android:text="@string/refresh"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toTopOf="@id/cardViewTodayIntake"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardViewTodayIntake"
@@ -116,7 +112,6 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="10dp"
-            android:backgroundTint="@android:color/darker_gray"
             android:elevation="10dp"
             app:cardCornerRadius="8dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -125,6 +120,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
+                android:layout_marginBottom="20dp"
                 android:layout_height="match_parent">
 
 
@@ -136,7 +132,6 @@
                     android:layout_marginTop="20dp"
                     android:fontFamily="@font/baloo_paaji_2_semibold"
                     android:text="@string/my_breakfast"
-                    android:textColor="@color/white"
                     android:textSize="17sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -184,7 +179,6 @@
                     android:layout_marginTop="20dp"
                     android:fontFamily="@font/baloo_paaji_2_semibold"
                     android:text="@string/my_lunch"
-                    android:textColor="@color/white"
                     android:textSize="17sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -232,7 +226,6 @@
                     android:layout_marginTop="20dp"
                     android:fontFamily="@font/baloo_paaji_2_semibold"
                     android:text="@string/my_dinner"
-                    android:textColor="@color/white"
                     android:textSize="17sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -280,9 +273,8 @@
                     android:layout_marginTop="20dp"
                     android:fontFamily="@font/baloo_paaji_2_semibold"
                     android:text="@string/my_snacks"
-                    android:textColor="@color/white"
-                    app:layout_constraintEnd_toEndOf="parent"
                     android:textSize="17sp"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/cardViewDinner" />
 
@@ -293,6 +285,8 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginBottom="20dp"
                     android:elevation="8dp"
                     app:cardCornerRadius="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -322,7 +316,71 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+
         </androidx.cardview.widget.CardView>
+
+
+        <TextView
+            android:id="@+id/totalIntakesTodayText"
+            android:layout_width="wrap_content"
+            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            android:text="@string/total_intakes_for_today"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/baloo_paaji_2_semibold"
+            app:layout_constraintEnd_toEndOf="@id/cardViewTodayIntake"
+            app:layout_constraintStart_toStartOf="@id/cardViewTodayIntake"
+            app:layout_constraintTop_toBottomOf="@id/cardViewTodayIntake" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/totalAllCardView"
+            android:layout_width="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="50dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/totalIntakesTodayText"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/totalMacroTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:fontFamily="@font/baloo_paaji_2_semibold"
+                    android:text="@string/all_macro_nutrients"
+                    android:textAlignment="center"
+                    android:textColor="?attr/colorPrimaryVariant"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/totalMicroTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/baloo_paaji_2_semibold"
+                    android:text="@string/all_micro_nutrients"
+                    android:textAlignment="center"
+                    android:textColor="?attr/colorPrimaryVariant"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/totalMacroTextView" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

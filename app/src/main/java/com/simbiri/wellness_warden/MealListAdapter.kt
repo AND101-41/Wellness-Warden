@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.simbiri.wellness_warden.model.FoodItem
+import com.squareup.picasso.Picasso
 
 class MealListAdapter(val context: Context, val mealArrayList: ArrayList<FoodItem>) :
     RecyclerView.Adapter<MealListAdapter.MealViewHolder>() {
@@ -20,8 +21,6 @@ class MealListAdapter(val context: Context, val mealArrayList: ArrayList<FoodIte
 
         private var nameFoodTextView = itemView.findViewById<TextView>(R.id.nameOfFoodItem)
         private var imageOfFood = itemView.findViewById<ImageView>(R.id.imageFoodInMeal)
-        private var textAdd = itemView.findViewById<TextView>(R.id.addQuantityText)
-        private var textNumberUnits = itemView.findViewById<TextView>(R.id.textQuantityMeals)
         private var textInfoFood = itemView.findViewById<TextView>(R.id.textInfoNutrientsFood)
 
 
@@ -31,16 +30,16 @@ class MealListAdapter(val context: Context, val mealArrayList: ArrayList<FoodIte
             this.currentFood = foodInstance
 
 //            imageOfFood.setImageResource(currentFood!!.imageId)
+            Picasso.get()
+                .load(foodInstance.imageId)
+                .into(imageOfFood)
+
+
             nameFoodTextView.text = currentFood!!.name
 
         }
 
         fun setOnClickListeners() {
-            textAdd.setOnClickListener {
-                var numberFood = textNumberUnits.text.toString().toInt()
-                numberFood += 1
-                textNumberUnits.text = numberFood.toString()
-            }
 
             textInfoFood.setOnClickListener {
                 val bottomSheetMealFragment = BottomSheetMealFragment.newInstance(currentFood!!)

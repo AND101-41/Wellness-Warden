@@ -50,6 +50,20 @@ data class MicroNutrients(
             return arrayOfNulls(size)
         }
     }
+
+    fun addInstances(other: MicroNutrients): MicroNutrients {
+        return MicroNutrients(
+            this.vitaminA + other.vitaminA,
+            this.vitaminD + other.vitaminD,
+            this.sugars + other.sugars,
+            this.iron + other.iron,
+            this.calcium + other.calcium,
+            this.fiber + other.fiber,
+            this.potassium + other.potassium,
+            this.magnesium + other.magnesium
+        )
+    }
+
 }
 
 

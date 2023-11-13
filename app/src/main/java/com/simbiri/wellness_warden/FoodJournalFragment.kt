@@ -17,6 +17,7 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.codepath.asynchttpclient.AsyncHttpClient
 import com.codepath.asynchttpclient.RequestParams
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler
@@ -45,11 +46,9 @@ class FoodJournalFragment : Fragment() {
     private lateinit var recyclerViewSnacks: RecyclerView
     private lateinit var textRefresh: TextView
     private lateinit var foodSearch: SearchView
-
-    private lateinit var cardViewCalculateBreak: CardView
-    private lateinit var cardViewCalculateLunch: CardView
-    private lateinit var cardViewCalculateDinner: CardView
-    private lateinit var cardViewCalculateSnack: CardView
+    private lateinit var totalFoodIntakes: TextView
+    private lateinit var totalMacroText: TextView
+    private lateinit var totalMicroTextView: TextView
 
 
     override fun onCreateView(
@@ -57,7 +56,6 @@ class FoodJournalFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val viewFrag = inflater.inflate(R.layout.food_journal_fragment, container, false)
-
 
 
         //this is how you initialize a variable in a fragment. A little different but same logic
@@ -82,6 +80,16 @@ class FoodJournalFragment : Fragment() {
             recyclerViewDinner.adapter!!.notifyDataSetChanged()
             recyclerViewSnacks.adapter!!.notifyDataSetChanged()
 
+            val totalFoodItem = calculateMealsTotal(CommonFoods.allFoods)
+
+            totalFoodItem.let {
+                totalMacroText.text =
+                    "Calories - ${it.macroNutrients.calories.toInt()}kcals," + " Protein - ${it.macroNutrients.protein.toInt()}g," + "\n" + " Carbs - ${it.macroNutrients.carbs.toInt()}g," + " Fats - ${it.macroNutrients.fats.toInt()}g "
+                totalMicroTextView.text =
+                    "Vitamin A - ${it.microNutrients.vitaminA.toInt()}mg," + " Vitamin D - ${it.microNutrients.vitaminD.toInt()}mg," + "\n" + " Sugars - ${it.microNutrients.sugars.toInt()}g," + "  Iron - ${it.microNutrients.iron.toInt()}mg," + "\n" +
+                            "Calcium - ${it.microNutrients.calcium.toInt()}mg," + " Fiber - ${it.microNutrients.fiber.toInt()}g," + "\n" + " Potassium - ${it.microNutrients.potassium.toInt()}mg," + " Magnesium - ${it.microNutrients.magnesium.toInt()}mg"
+            }
+
             Toast.makeText(requireContext(), "Updated meals info", Toast.LENGTH_LONG).show()
 
         }
@@ -99,6 +107,20 @@ class FoodJournalFragment : Fragment() {
         })
     }
 
+    private fun calculateMealsTotal(allFoodItems: ArrayList<FoodItem>): FoodItem {
+
+        var totalMacroNutrients = MacroNutrients(0.0, 0.0, 0.0, 0.0)
+        var totalMicroNutrients = MicroNutrients(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+
+        for (foodItem in allFoodItems) {
+            totalMacroNutrients = totalMacroNutrients.addInstances(foodItem.macroNutrients)
+            totalMicroNutrients = totalMicroNutrients.addInstances(foodItem.microNutrients)
+        }
+
+        return FoodItem("", "", " ", 1.0, totalMacroNutrients, totalMicroNutrients, "")
+
+    }
+
     private fun initializeViews(viewFrag: View) {
 
         recyclerViewSearch = viewFrag.findViewById(R.id.recyclerViewSearches)
@@ -107,7 +129,9 @@ class FoodJournalFragment : Fragment() {
         recyclerViewDinner = viewFrag.findViewById(R.id.recyclerViewDinner)
         recyclerViewSnacks = viewFrag.findViewById(R.id.recyclerViewSnack)
 
-
+        totalFoodIntakes = viewFrag.findViewById(R.id.totalIntakesTodayText)
+        totalMicroTextView = viewFrag.findViewById(R.id.totalMicroTextView)
+        totalMacroText = viewFrag.findViewById(R.id.totalMacroTextView)
         foodSearch = viewFrag.findViewById(R.id.searchView)
         textRefresh = viewFrag.findViewById(R.id.updateMealsButton)
 
@@ -164,10 +188,10 @@ class FoodJournalFragment : Fragment() {
     private fun getRequestFood(queryString: String) {
         val client = AsyncHttpClient()
         val params = RequestParams()
-        val endpoint: String = "https://api.nal.usda.gov/fdc/v1/foods/search"
+        val endpoint = "https://api.nal.usda.gov/fdc/v1/foods/search"
 
         params["query"] = queryString
-        params["pageSize"] = "4"
+        params["pageSize"] = "50"
         params["dataType"] = "Survey (FNDDS)"
         params["api_key"] = getString(R.string.USDA_key)
 
@@ -224,7 +248,8 @@ class FoodJournalFragment : Fragment() {
                 val context = requireContext()
                 val adapter = FoodSearchAdapter(context, foodResults)
                 recyclerViewSearch.adapter = adapter
-                recyclerViewSearch.layoutManager =  GridLayoutManager(context, 2)
+                recyclerViewSearch.layoutManager =
+                    StaggeredGridLayoutManager(5, StaggeredGridLayoutManager.HORIZONTAL)
             }
 
             override fun onFailure(

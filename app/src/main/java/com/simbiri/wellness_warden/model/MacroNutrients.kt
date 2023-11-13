@@ -35,6 +35,17 @@ data class MacroNutrients(
             return arrayOfNulls(size)
         }
     }
+
+    fun addInstances(other: MacroNutrients): MacroNutrients {
+        return MacroNutrients(
+            this.calories + other.calories,
+            this.protein + other.protein,
+            this.carbs + other.carbs,
+            this.fats + other.fats
+        )
+    }
+
 }
+
 
 

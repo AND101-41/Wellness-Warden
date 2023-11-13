@@ -83,6 +83,8 @@ class BottomSheetSearchFragment : BottomSheetDialogFragment() {
             getFoodImage(foodInstance!!.name){
                 imageUrl -> foodInstance!!.imageId = if (imageUrl.isNotEmpty()) imageUrl else ""
                 CommonFoods.allBreakFast.add(foodInstance!!)
+                CommonFoods.allFoods.add(foodInstance!!)
+
                 Log.d("foodtest", foodInstance!!.imageId)
             }
 
@@ -91,17 +93,37 @@ class BottomSheetSearchFragment : BottomSheetDialogFragment() {
 
         }
         addLunchButton.setOnClickListener {
-            CommonFoods.allLunch.add(foodInstance!!)
+
+            getFoodImage(foodInstance!!.name){
+                    imageUrl -> foodInstance!!.imageId = if (imageUrl.isNotEmpty()) imageUrl else ""
+                CommonFoods.allLunch.add(foodInstance!!)
+                CommonFoods.allFoods.add(foodInstance!!)
+
+                Log.d("foodtest", foodInstance!!.imageId)
+            }
+
             Toast.makeText(requireContext(), "Added food to Lunch", Toast.LENGTH_SHORT).show()
             dismiss()
         }
         addDinnerButton.setOnClickListener {
-            CommonFoods.allDinner.add(foodInstance!!)
+            getFoodImage(foodInstance!!.name){
+                    imageUrl -> foodInstance!!.imageId = if (imageUrl.isNotEmpty()) imageUrl else ""
+                CommonFoods.allDinner.add(foodInstance!!)
+                CommonFoods.allFoods.add(foodInstance!!)
+                Log.d("foodtest", foodInstance!!.imageId)
+            }
+
             Toast.makeText(requireContext(), "Added food to Dinner", Toast.LENGTH_SHORT).show()
             dismiss()
         }
         addSnackButton.setOnClickListener {
-            CommonFoods.allSnacks.add(foodInstance!!)
+            getFoodImage(foodInstance!!.name){
+                    imageUrl -> foodInstance!!.imageId = if (imageUrl.isNotEmpty()) imageUrl else ""
+                CommonFoods.allSnacks.add(foodInstance!!)
+                CommonFoods.allFoods.add(foodInstance!!)
+
+                Log.d("foodtest", foodInstance!!.imageId)
+            }
             Toast.makeText(requireContext(), "Added meal to Snacks", Toast.LENGTH_SHORT).show()
             dismiss()
         }
@@ -140,7 +162,7 @@ class BottomSheetSearchFragment : BottomSheetDialogFragment() {
     private fun getFoodImage(queryString: String, callback: (String) -> Unit){
         val client = AsyncHttpClient()
         val params = RequestParams()
-        val endpoint: String = "https://api.unsplash.com/search/photos"
+        val endpoint= "https://api.unsplash.com/search/photos"
 
         params["query"] = queryString
         params["per_page"] = "1"
@@ -148,6 +170,7 @@ class BottomSheetSearchFragment : BottomSheetDialogFragment() {
 
         client[endpoint, params, object : JsonHttpResponseHandler(){
             override fun onSuccess(statusCode: Int, headers: Headers?, json: JSON?) {
+
                 val imageObj = json?.jsonObject?.getJSONArray("results")?.getJSONObject(0)
 //                imageUrl = imageObj?.getJSONObject("urls")?.getString("regular").toString()
 
