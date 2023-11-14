@@ -51,7 +51,7 @@ Here's a place for any other notes on this milestone!
 
 <!-- (This is a comment) INSTRUCTIONS: Go through this page and fill out any **bolded** entries with their correct values.-->
 
-# AND101 Milestone 2 - **Team/App Name**
+# AND101 Milestone 2 - **Wellness Warden**
 
 Submitted by:
 - **Willy Resendiz**
