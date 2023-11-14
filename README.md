@@ -59,7 +59,7 @@ Submitted by:
 - **Abdinahmen Ahmed**
 - **Heet Patel**
 
-Time spent: **X** hours spent in total
+Time spent: **20** hours spent in total
 
 ## Summary
 
@@ -77,18 +77,20 @@ The following REQUIRED features are completed:
 
 The following REQUIRED files are included:
 
-- [ ] Updated 📄 `project_spec.md`, which contains:
+- [] Updated 📄 `project_spec.md`, which contains:
   - [X] App Overview (Milestone 1)
   - [X] App Spec (Milestone 1)
   - [X] Checked off 2+ completed features
-  - [ ] 2+ Videos/GIFs of build progress
+  - [X] 2+ Videos/GIFs of build progress
 
-- [ ] Our 🎥 Demo Video
+- [X] Our 🎥 Demo Video
   - [ ] We have also added the Demo Video Link to the Group Info Form on the course portal.
 
 The following EXTRA features are implemented:
 
-- [ ] List anything else that you added to improve your submission!
+- [X] List anything else that you added to improve your submission!
+We used fragments to implement the different views in the project which was something new.
+
 
 ## 🎥 Demo Video
 
