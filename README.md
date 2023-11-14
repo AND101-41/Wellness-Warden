@@ -51,7 +51,7 @@ Here's a place for any other notes on this milestone!
 
 <!-- (This is a comment) INSTRUCTIONS: Go through this page and fill out any **bolded** entries with their correct values.-->
 
-# AND101 Milestone 2 - **Team/App Name**
+# AND101 Milestone 2 - **Wellness Warden**
 
 Submitted by:
 - **Willy Resendiz**
@@ -63,7 +63,7 @@ Time spent: **X** hours spent in total
 
 ## Summary
 
-This document provides a summary of our project building process for our app, **Wellness Warden**
+This document provides a summary of our project building process for our app, An app **that helps users track their food intake and nutritional values.**
 
 ## Milestone Requirements
 
