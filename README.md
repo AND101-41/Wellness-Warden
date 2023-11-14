@@ -96,9 +96,9 @@ We used fragments to implement the different views in the project which was some
 
 Here's a video that demos all of the app's implemented features:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Demo' width='' alt='Video Demo' />
+<img src='https://vimeo.com/884288315?share=copy' title='Video Demo' width='' alt='Video Demo' />
 
-VIDEO created with **your chosen video tool**
+VIDEO created with BandiCam , hosted on vimeo
 
 ## Notes
 
