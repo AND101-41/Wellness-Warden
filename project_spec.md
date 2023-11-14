@@ -34,7 +34,6 @@ Required Features:
 2. [X] User can retrieve nutritional information of logged food items. - Willy & Ray 
 3. [X] User can view their daily intake of calories, carbs, proteins, and other nutrients. - Ray
 4. [X] User can compare their daily intake with recommended dietary values. - Heet and Abdinahmen
-5. [] User can set dietary goals.
 
 
 
