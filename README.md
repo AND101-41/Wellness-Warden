@@ -63,7 +63,7 @@ Time spent: **X** hours spent in total
 
 ## Summary
 
-This document provides a summary of our project building process for our app, **Wellness Warden**
+This document provides a summary of our project building process for our app, An app **that helps users track their food intake and nutritional values.**
 
 ## Milestone Requirements
 
