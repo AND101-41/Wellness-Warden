@@ -139,6 +139,11 @@ process, or what you learned this unit!
 
 For Milestone 2, include **2+ Videos/GIFs** of the build process here!
 
+Gif 1)
+<img src='https://imgur.com/gallery/NXiLCwd' title='mid-progress' width='' alt='Video Demo' />
+
+Gif 2)
+<img src='https://imgur.com/gallery/kpM1lNa' title='progress-complete-app' width='' alt='Video Demo' />
 ## License
 
 Copyright **2023** **Willy Resendiz, Ray Isaac Simbiri, Abdinahmen Ahmed, Heet Patel**
