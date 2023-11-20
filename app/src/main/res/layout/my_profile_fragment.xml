@@ -4,164 +4,140 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/backgroundpic"
     tools:context=".MyProfileFragment">
+
 
     <TextView
         android:id="@+id/aboutMe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="About Me"
-        android:textColor="@color/white"
-        android:textAlignment="viewStart"
-        android:textSize="25dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:fontFamily="@font/baloo_paaji_2_semibold"
+        android:text="@string/my_caloric_and_nutrient_intake"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <TextView
-        android:id="@+id/tvCurrentWeight"
+        android:id="@+id/kcalCurrent"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Weight: 154.5 lbs"
-        android:textSize="18sp"
-        android:textColor="@color/white"
+        android:text="@string/calories_consumed"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@id/weightProgressBar"
         app:layout_constraintTop_toBottomOf="@id/aboutMe"
-        app:layout_constraintEnd_toStartOf="@+id/tvWeightLost"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"/>
 
-    <TextView
-        android:id="@+id/tvWeightLost"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="You lost: 10.6 lbs"
-        android:textSize="18sp"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toEndOf="@id/tvCurrentWeight"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tvCurrentWeight" />
 
     <ProgressBar
         android:id="@+id/weightProgressBar"
-        style="?android:attr/progressBarStyleHorizontal"
+        style="@android:style/Widget.ProgressBar.Horizontal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:minHeight="20dp"
-        android:progressDrawable="@drawable/custom_progress_bar"
-        app:layout_constraintTop_toBottomOf="@id/tvCurrentWeight"
+        android:min="0"
+        android:progress="0"
+        android:progressTint="@color/orangePrimaryVariant"
+        app:layout_constraintTop_toBottomOf="@id/kcalCurrent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="20dp"
         android:layout_marginStart="40dp"
         android:layout_marginEnd="40dp"/>
 
-    <TextView
-        android:id="@+id/weight"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="165.5 lbs"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="40dp"
-        android:layout_marginLeft="100dp"
-        android:textColor="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/weightProgressBar"
-        app:layout_constraintEnd_toStartOf="@+id/tvWeightLost"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"/>
 
     <TextView
-        android:id="@+id/weight_goal"
-        android:layout_width="122dp"
+        android:id="@+id/kcalLimit"
+        android:layout_width="wrap_content"
         android:layout_height="27dp"
         android:layout_marginTop="16dp"
-        android:layout_marginRight="20dp"
-        android:text="Goal: 143.5 lbs"
-        android:textSize="18sp"
-        android:textColor="@color/white"
+        android:layout_marginEnd="30dp"
+        android:text="@string/calories_limit"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/weight"
         app:layout_constraintTop_toBottomOf="@id/weightProgressBar" />
-
-
-    <TextView
-        android:id="@+id/height"
-        android:layout_width="146dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="24dp"
-        android:text="Height in inches: "
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@id/enterHeight"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/weight" />
-
-    <TextView
-        android:id="@+id/weightttt"
-        android:layout_width="116dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginRight="20dp"
-        android:text="Weight in lbs: "
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@id/enterHeight"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/height" />
 
     <EditText
         android:id="@+id/enterHeight"
-        android:layout_width="151dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:background="@color/white"
-        android:hint="Enter your height"
+        android:hint="Enter your height (in)"
+        android:inputType="numberDecimal"
         android:textColor="@color/black"
-        app:layout_constraintStart_toEndOf="@id/height"
-        app:layout_constraintTop_toBottomOf="@id/weight" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/kcalLimit"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
     <EditText
         android:id="@+id/enterWeight"
-        android:layout_width="151dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:background="@color/white"
-        android:hint="Enter your weight"
+        android:inputType="numberDecimal"
+        android:hint="Enter your weight (lbs)"
         android:textColor="@color/black"
-        app:layout_constraintStart_toEndOf="@id/weightttt"
-        app:layout_constraintTop_toBottomOf="@id/enterHeight" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/enterHeight"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+    <EditText
+        android:id="@+id/enterAge"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@color/white"
+        android:inputType="numberSigned"
+        android:hint="Enter your age"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/enterWeight"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
-<!--    <TextView-->
-<!--        android:id="@+id/tvBMI"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="BMI: "-->
-<!--        android:textSize="18sp"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/enterHeight"-->
-<!--        android:layout_marginStart="40dp"-->
-<!--        android:layout_marginTop="16dp"/>-->
-
-    <TextView
-        android:id="@+id/tvBMICalculation"
+    <RadioGroup
+        android:id="@+id/genderRadioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textColor="#4CAF50"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/enterAge"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/calcButton"
+
+        >
+
+        <RadioButton
+            android:id="@+id/radioMale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Male"
+            android:textSize="15sp"
+            />
+
+        <RadioButton
+            android:id="@+id/radioFemale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Female"
+            android:textSize="15sp"
+            />
+    </RadioGroup>
+    <Button
+        android:id="@+id/calcButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calculate"
+        app:layout_constraintStart_toEndOf="@id/genderRadioGroup"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/enterWeight"
-        android:layout_marginTop="16dp"
-        android:text="" />
+        app:layout_constraintTop_toTopOf="@id/genderRadioGroup"
+
+        />
 
     <!-- Nutrient ids and descriptions as TextViews -->
 
@@ -174,127 +150,140 @@
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvBMICalculation"
-        android:layout_marginTop="16dp" />
+        app:layout_constraintTop_toBottomOf="@id/genderRadioGroup"
+        android:layout_marginTop="15dp" />
 
-
-
-    <TextView
-        android:id="@+id/tvEnergy"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:layout_marginStart="40dp"
-        android:text="Energy (kcals)"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="parent"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewNutrients"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:elevation="8dp"
+        app:cardCornerRadius="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvDailyIntakeTitle"
-        android:layout_marginTop="8dp" />
-
-    <TextView
-        android:id="@+id/tvTotalLipid"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:layout_marginStart="40dp"
-        android:text="Total Lipid (g)"
-        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvEnergy"
-        android:layout_marginTop="8dp" />
+        app:layout_constraintTop_toBottomOf="@id/tvDailyIntakeTitle">
 
-    <!-- Repeat the pattern for the rest of the nutrient ids -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewNutrients"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            tools:listitem="@layout/nutrient_list_item"
+            />
 
-    <TextView
-        android:id="@+id/tvProtein"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:layout_marginStart="40dp"
-        android:text="Protein (g)"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvTotalLipid"
-        android:layout_marginTop="8dp" />
+    </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:id="@+id/tvFiber"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:layout_marginStart="40dp"
-        android:text="Fiber, total dietary (g)"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvProtein"
-        android:layout_marginTop="8dp" />
+<!--    <TextView-->
+<!--        android:id="@+id/tvEnergy"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textSize="18sp"-->
+<!--        android:text="Energy (kcals)"-->
+<!--        android:textColor="@color/white"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tvDailyIntakeTitle"-->
+<!--        android:layout_marginTop="16dp" />-->
 
-    <TextView
-        android:id="@+id/tvFattyAcidsTotalTrans"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:layout_marginStart="40dp"
-        android:textColor="@color/white"
-        android:text="Fatty acids, total trans (g)"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvFiber"
-        android:layout_marginTop="8dp" />
+<!--    <TextView-->
+<!--        android:id="@+id/tvTotalLipid"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textSize="18sp"-->
+<!--        android:text="Total Lipid (g)"-->
+<!--        android:textColor="@color/white"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tvEnergy"-->
+<!--        android:layout_marginTop="8dp" />-->
 
-    <TextView
-        android:id="@+id/tvFattyAcidsTotalSaturated"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:layout_marginStart="40dp"
-        android:text="Fatty acids, total saturated (g)"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:textColor="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/tvFattyAcidsTotalTrans"
-        android:layout_marginTop="8dp" />
+<!--    &lt;!&ndash; Repeat the pattern for the rest of the nutrient ids &ndash;&gt;-->
 
-    <TextView
-        android:id="@+id/tvCarbohydrate"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:layout_marginStart="40dp"
-        android:textColor="@color/white"
-        android:text="Carbohydrate (g)"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvFattyAcidsTotalSaturated"
-        android:layout_marginTop="8dp" />
+<!--    <TextView-->
+<!--        android:id="@+id/tvProtein"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textSize="18sp"-->
+<!--        android:text="Protein (g)"-->
+<!--        android:textColor="@color/white"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tvTotalLipid"-->
+<!--        android:layout_marginTop="8dp" />-->
 
-    <TextView
-        android:id="@+id/tvSugars"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textColor="@color/white"
-        android:layout_marginStart="40dp"
-        android:text="Sugars, total including NLEA (g)"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvCarbohydrate"
-        android:layout_marginTop="8dp" />
+<!--    <TextView-->
+<!--        android:id="@+id/tvFiber"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textSize="18sp"-->
+<!--        android:text="Fiber, total dietary (g)"-->
+<!--        android:textColor="@color/white"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tvProtein"-->
+<!--        android:layout_marginTop="8dp" />-->
 
-    <TextView
-        android:id="@+id/tvCholesterol"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:layout_marginStart="40dp"
-        android:textColor="@color/white"
-        android:text="Cholesterol (mg)"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvSugars"
-        android:layout_marginTop="8dp" />
+<!--    <TextView-->
+<!--        android:id="@+id/tvFattyAcidsTotalTrans"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textSize="18sp"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:text="Fatty acids, total trans (g)"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tvFiber"-->
+<!--        android:layout_marginTop="8dp" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/tvFattyAcidsTotalSaturated"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textSize="18sp"-->
+<!--        android:text="Fatty acids, total saturated (g)"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        android:textColor="@color/white"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tvFattyAcidsTotalTrans"-->
+<!--        android:layout_marginTop="8dp" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/tvCarbohydrate"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textSize="18sp"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:text="Carbohydrate (g)"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tvFattyAcidsTotalSaturated"-->
+<!--        android:layout_marginTop="8dp" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/tvSugars"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textSize="18sp"-->
+<!--        android:textColor="@color/white"-->
+
+<!--        android:text="Sugars, total including NLEA (g)"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tvCarbohydrate"-->
+<!--        android:layout_marginTop="8dp" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/tvCholesterol"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textSize="18sp"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:text="Cholesterol (mg)"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tvSugars"-->
+<!--        android:layout_marginTop="8dp" />-->
 </androidx.constraintlayout.widget.ConstraintLayout>

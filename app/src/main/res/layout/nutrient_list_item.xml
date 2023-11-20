@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="250dp"
+    android:layout_height="150dp"
+    android:layout_marginStart="5dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginEnd="5dp"
+    android:layout_marginBottom="5dp"
+    android:elevation="16dp"
+    app:cardCornerRadius="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        
+        <TextView
+            android:id="@+id/nutrientName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/nutrientTrack"
+            android:text="Name of Nutrient"
+            android:textSize="25sp"
+            android:fontFamily="@font/baloo_paaji_2_semibold"
+            />
+            
+        <ProgressBar
+            android:id="@+id/nutrientTrack"
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nutrientName"
+            app:layout_constraintBottom_toTopOf="@id/nutrientInfo"
+            android:progressTint="@color/orangePrimaryVariant"
+            android:fontFamily="@font/baloo_paaji_2_semibold"
+            android:layout_marginHorizontal="10dp"
+            />
+        <TextView
+            android:id="@+id/nutrientInfo"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nutrientTrack"
+            app:layout_constraintBottom_toTopOf="@id/bottomBar"
+            android:text="@string/consumed_recommended"
+            />
+
+
+        <TextView
+            android:id="@+id/bottomBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimaryVariant"
+            android:fontFamily="@font/baloo_paaji_2_semibold"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

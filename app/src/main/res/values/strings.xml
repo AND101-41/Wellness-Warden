@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">WellNess Warden</string>
-    <string name="USDA_key">qi4V5nxjZohKAVkKBfDS3vyHUE41Khas1w1tLpla</string>
-    <string name="unsplash_key">C_E-_5PwoDZ_kEOopuvOv1bePUCQm_7Ou6UHqt-QeDI</string>
     <string name="my_profile">My profile</string>
     <string name="food_journal">Food Journal</string>
     <string name="my_food_journal">My Food Journal</string>
@@ -31,5 +29,9 @@
     <string name="macro_nutrients">Calories - %1$d kcals, Protein - %2$d g,\nCarbs - %3$d g, Fats - %4$d g</string>
 
     <string name="micro_nutrients">Vitamin A - %1$d μg, Vitamin D - %2$d μg,\nSugars - %3$d g, Iron - %4$d mg,\nCalcium - %5$d mg, Fiber - %6$d g,\nPotassium - %7$d mg, Magnesium - %8$d mg</string>
+    <string name="my_caloric_and_nutrient_intake">My Caloric and Nutrient Intake</string>
+    <string name="calories_consumed">Calories Consumed: %1$s</string>
+    <string name="calories_limit">BMR: %1$s</string>
+    <string name="consumed_recommended">Consumed: %1$s %2$s Recommended: %3$s %4$s</string>
 
 </resources>

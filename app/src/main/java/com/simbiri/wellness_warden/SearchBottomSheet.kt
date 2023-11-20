@@ -129,8 +129,9 @@ class BottomSheetSearchFragment : BottomSheetDialogFragment() {
             foodInstance.imageId = if (imageUrl.isNotEmpty()) imageUrl else ""
             list.add(foodInstance)
             CommonFoods.allFoods.add(foodInstance)
+            CommonFoods.personTrack.consume(foodInstance)
 
-            Log.d("foodtest", foodInstance.imageId)
+//            Log.d("foodtest", foodInstance.imageId)
             Toast.makeText(requireContext(), toastMessage, Toast.LENGTH_SHORT).show()
             dismiss()
         }

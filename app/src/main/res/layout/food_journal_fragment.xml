@@ -319,69 +319,6 @@
 
         </androidx.cardview.widget.CardView>
 
-
-        <TextView
-            android:id="@+id/totalIntakesTodayText"
-            android:layout_width="wrap_content"
-            android:textSize="17sp"
-            android:layout_height="wrap_content"
-            android:text="@string/total_intakes_for_today"
-            android:layout_marginTop="30dp"
-            android:fontFamily="@font/baloo_paaji_2_semibold"
-            app:layout_constraintEnd_toEndOf="@id/cardViewTodayIntake"
-            app:layout_constraintStart_toStartOf="@id/cardViewTodayIntake"
-            app:layout_constraintTop_toBottomOf="@id/cardViewTodayIntake" />
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/totalAllCardView"
-            android:layout_width="match_parent"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="50dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/totalIntakesTodayText"
-            android:layout_height="wrap_content">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/totalMacroTextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:fontFamily="@font/baloo_paaji_2_semibold"
-                    android:text="@string/all_macro_nutrients"
-                    android:textAlignment="center"
-                    android:textColor="?attr/colorPrimaryVariant"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/totalMicroTextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:fontFamily="@font/baloo_paaji_2_semibold"
-                    android:text="@string/all_micro_nutrients"
-                    android:textAlignment="center"
-                    android:textColor="?attr/colorPrimaryVariant"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/totalMacroTextView" />
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.cardview.widget.CardView>
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.core.widget.NestedScrollView>

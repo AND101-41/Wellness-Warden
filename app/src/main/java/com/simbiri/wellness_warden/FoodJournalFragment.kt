@@ -80,31 +80,6 @@ class FoodJournalFragment : Fragment() {
             recyclerViewDinner.adapter!!.notifyDataSetChanged()
             recyclerViewSnacks.adapter!!.notifyDataSetChanged()
 
-            val totalFoodItem = calculateMealsTotal(CommonFoods.allFoods)
-
-            totalFoodItem.let {
-                totalMacroText.text = getString(
-                    R.string.macro_nutrients,
-                    it.macroNutrients.calories.toInt(),
-                    it.macroNutrients.protein.toInt(),
-                    it.macroNutrients.carbs.toInt(),
-                    it.macroNutrients.fats.toInt()
-                )
-
-                totalMicroTextView.text = getString(
-                    R.string.micro_nutrients,
-                    it.microNutrients.vitaminA.toInt(),
-                    it.microNutrients.vitaminD.toInt(),
-                    it.microNutrients.sugars.toInt(),
-                    it.microNutrients.iron.toInt(),
-                    it.microNutrients.calcium.toInt(),
-                    it.microNutrients.fiber.toInt(),
-                    it.microNutrients.potassium.toInt(),
-                    it.microNutrients.magnesium.toInt()
-                )
-            }
-
-
             Toast.makeText(requireContext(), "Updated meals info", Toast.LENGTH_LONG).show()
 
         }
@@ -122,20 +97,6 @@ class FoodJournalFragment : Fragment() {
         })
     }
 
-    private fun calculateMealsTotal(allFoodItems: ArrayList<FoodItem>): FoodItem {
-
-        var totalMacroNutrients = MacroNutrients(0.0, 0.0, 0.0, 0.0)
-        var totalMicroNutrients = MicroNutrients(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
-
-        for (foodItem in allFoodItems) {
-            totalMacroNutrients = totalMacroNutrients.addInstances(foodItem.macroNutrients)
-            totalMicroNutrients = totalMicroNutrients.addInstances(foodItem.microNutrients)
-        }
-
-        return FoodItem("", "", " ", 1.0, totalMacroNutrients, totalMicroNutrients, "")
-
-    }
-
     private fun initializeViews(viewFrag: View) {
 
         recyclerViewSearch = viewFrag.findViewById(R.id.recyclerViewSearches)
@@ -144,9 +105,6 @@ class FoodJournalFragment : Fragment() {
         recyclerViewDinner = viewFrag.findViewById(R.id.recyclerViewDinner)
         recyclerViewSnacks = viewFrag.findViewById(R.id.recyclerViewSnack)
 
-        totalFoodIntakes = viewFrag.findViewById(R.id.totalIntakesTodayText)
-        totalMicroTextView = viewFrag.findViewById(R.id.totalMicroTextView)
-        totalMacroText = viewFrag.findViewById(R.id.totalMacroTextView)
         foodSearch = viewFrag.findViewById(R.id.searchView)
         textRefresh = viewFrag.findViewById(R.id.updateMealsButton)
 

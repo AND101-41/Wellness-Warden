@@ -1,7 +1,7 @@
 package com.simbiri.wellness_warden
 
 import com.simbiri.wellness_warden.model.FoodItem
-
+import com.simbiri.wellness_warden.model.Person
 import android.content.Context
 import android.os.Parcel
 import android.os.Parcelable
@@ -21,6 +21,7 @@ object CommonFoods {
     var allDinner = ArrayList<FoodItem>()
     var allSnacks = ArrayList<FoodItem>()
     var allFoods = ArrayList<FoodItem>()
+    var personTrack = Person()
 
 }
 
