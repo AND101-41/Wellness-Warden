@@ -91,12 +91,14 @@ The following EXTRA features are implemented:
 - [X] List anything else that you added to improve your submission!
 We used fragments to implement the different views in the project which was something new.
 
+## 🎥 Demo Gif
+<img src='https://i.imgur.com/l8isqrm.gif' title='App Gif Demonstration' width='' alt='Gif Demo' />
 
 ## 🎥 Demo Video
 
 Here's a video that demos all of the app's implemented features:
 
-<img src='https://vimeo.com/884288315?share=copy' title='Video Demo' width='' alt='Video Demo' />
+<img src='https://vimeo.com/cl884288315?share=copy' title='Video Demo' width='' alt='Video Demo' />
 
 VIDEO created with BandiCam , hosted on vimeo
 
