@@ -34,4 +34,5 @@
     <string name="calories_limit">BMR: %1$s</string>
     <string name="consumed_recommended">Consumed: %1$s %2$s Recommended: %3$s %4$s</string>
 
+
 </resources>

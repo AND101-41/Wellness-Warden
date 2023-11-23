@@ -9,11 +9,24 @@
         <item name="colorSecondary">@color/black</item>
         <item name="colorSecondaryVariant">@color/greenSecVariant</item>
         <item name="colorOnSecondary">@color/white</item>
+        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">?attr/colorPrimary</item>
         <!-- Customize your theme here. -->
+
     </style>
 
+
+    <style name="AppBottomSheetDialogTheme"
+        parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+    </style>
+
+
+    <style name="AppModalStyle"
+        parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bottom_sheets_backg</item>
+    </style>
     <style name="bottomNavTextStyle" parent="Widget.Material3.BottomNavigationView">
         <item name="fontFamily">@font/baloo_paaji_2_semibold</item>
         <item name="android:textSize">13sp</item>
